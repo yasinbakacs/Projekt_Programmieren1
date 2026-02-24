@@ -6,6 +6,7 @@
 #include "vehicle.h"
 #include <stdio.h>
 
+
 vehicle vehicle_create(int *p_next_id, int max_duration, int current_time)
 {
     vehicle new_vehicle;
@@ -34,4 +35,20 @@ vehicle vehicle_create(int *p_next_id, int max_duration, int current_time)
     new_vehicle.time_remaining = 0;
 
     return new_vehicle;
+}
+
+
+    void vehicle_print(const vehicle *p_vehicle)
+{
+    /*
+     * PSEUDOCODE:
+     *
+     * Falls p_vehicle NULL ist:
+     *     Funktion beenden
+     *
+     * Ausgabe:
+     *     ID
+     *     Einfahrtszeitpunkt
+     *     Verbleibende Parkdauer
+     */
 }
