@@ -23,3 +23,14 @@ bool initGarage(ParkingGarage *garage, int capacity) {
     return false; // Platzhalter Rückgabewert
 }
 
+int findFreeSpot(const ParkingGarage *garage) {
+    // Pseudocode:
+    // 1) Prüfen: garage != NULL
+    // 2) Für i = 0 bis capacity - 1:
+    //      - Wenn garage->spots[i].occupied == false:
+    //          -> Rückgabe von i (Index des freien Platzes)
+    //      - Wenn kein Platz frei
+    //          -> Rückgabe -1
+    return -1; // Platzhalter Rückgabewert
+}
+
