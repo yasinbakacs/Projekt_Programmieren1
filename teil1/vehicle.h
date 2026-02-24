@@ -2,16 +2,16 @@
 #define VEHICLE_H
 
 /*
-* File: vehicle.h
-* Description: Definiert die Fahrzeugstruktur und zugehörige Schnittstellenfunktionen
-*/
+ * File: vehicle.h
+ * Description: Definiert die Fahrzeugstruktur und zugehörige Schnittstellenfunktionen
+ */
 
 #include <stdio.h>
 
 /*
-* Structure: vehicle
-* Description: Repräsentiert ein Fahrzeug in der Parkhaus-Simulation
-*/
+ * Structure: vehicle
+ * Description: Repräsentiert ein Fahrzeug in der Parkhaus-Simulation
+ */
 
 typedef struct vehicle
 {
