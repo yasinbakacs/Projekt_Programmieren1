@@ -1,3 +1,9 @@
+/*
+ * ================================================================
+ * File:        parking.h
+ * Description: Header-Datei für Parkhaus Funktionen
+ * ================================================================
+ */
 #ifndef PARKING_H
 #define PARKING_H
 
@@ -8,12 +14,12 @@
 // Struktur eines einzelnen Stellplatzes
 typedef struct {
     bool occupied;   //wenn true, dann ist der Parkplatz besetzt
-    Vehicle *vehicle; //zeigt auf Fahrzeug, das auf diesem Parkplatz steht (definiert in vehicle.h)
+    vehicle *vehicle; //zeigt auf Fahrzeug, das auf diesem Parkplatz steht (definiert in vehicle.h)
 } ParkingSpot;
 
 //Struktur des Parkhauses
 typedef struct {
-    int capapcity; //Anzahl der Parkplätze
+    int capacity; //Anzahl der Parkplätze
     ParkingSpot *spots; //Array von Parkplätzen
     int occupiedCount; //Anzahl der besetzten Parkplätze
 } ParkingGarage;
@@ -63,7 +69,7 @@ int findFreeSpot(const ParkingGarage *garage);
  * @return true wenn das Fahrzeug erfolgreich eingeparkt wurde
  * @return false wenn kein freier Stellplatz vorhanden ist
  */
-bool parkVehicle(ParkingGarage *garage, Vehicle v);
+bool parkVehicle(ParkingGarage *garage, vehicle v);
 
 
 /**
