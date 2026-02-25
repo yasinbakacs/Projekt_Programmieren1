@@ -30,9 +30,9 @@ vehicle vehicle_create(int *p_next_id, int max_duration, int current_time)
      * Fahrzeug zurückgeben
      */
 
-    new_vehicle.id = 0;
-    new_vehicle.entry_time = 0;
-    new_vehicle.time_remaining = 0;
+    new_vehicle.id = 0;                //Platzhalter
+    new_vehicle.entry_time = 0;        //Platzhalter
+    new_vehicle.time_remaining = 0;    //Platzhalter
 
     return new_vehicle;
 }
