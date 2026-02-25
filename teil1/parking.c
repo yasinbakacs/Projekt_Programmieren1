@@ -34,3 +34,32 @@ int findFreeSpot(const ParkingGarage *garage) {
     return -1; // Platzhalter Rückgabewert
 }
 
+bool parkVehicle(ParkingGarage *garage, vehicle v) {
+    // Pseudocode:
+    // 1) Prüfen: garage != NULL
+    // 2) freien Platz suchen (mit findFreeSpot - Funktion)
+    // 3 Wenn kein freier Platz gefunden:
+    //      -> Rückgabe false (kein Platz frei)
+    // 4) Wenn freien Platz gefunden:
+    //     - garage->spots[freierPlatz].occupied = true; (Platz belegen)
+    //     - garage->spots[freierPlatz].vehicle = &v; (Fahrzeug zuweisen)
+    //     - garage->occupiedCount++; (Belegungszähler erhöhen)
+    //     -> Rückgabe true (Fahrzeug erfolgreich eingeparkt)
+    return false; // Platzhalter Rückgabewert
+}
+
+void processDepartures(ParkingGarage *garage, int *departuresThisStep) {
+    // Pseudocode:
+    // 1) Prüfen: garage != NULL und departuresThisStep != NULL
+    // 2) departuresThisStep auf 0 setzen (Anzahl der Abfahrten dieses Schritts zurücksetzen)
+    // 3) Für i = 0 bis capacity - 1:
+    //      - Wenn garage->spots[i].occupied == true:
+    //          - garage->spots[i].vehicle->time_remaining -- ; (Verbleibende Zeit des Fahrzeugs verringern)
+    //          - Wenn garage->spots[i].vehicle->time_remaining <= 0:
+    //              -> Fahrzeug verlässt den Platz
+    //              -> garage->spots[i].occupied = false; (Platz freigeben)
+    //              -> garage->spots[i].vehicle = NULL; (Fahrzeug entfernen)
+    //              -> garage->occupiedCount--; (Belegungszähler verringern)
+    //              -> departuresThisStep++; (Abfahrten dieses Schritts erhöhen)
+    }
+
