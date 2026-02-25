@@ -2,122 +2,55 @@
  * File: Simulation.c
  * Description: C-Datei für die Simulation eines Parkhauses.
  */
-// Einbinden der 
+
+/* Einbinden der Standardbibliotheken und Simulation.h */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 #include "simulation.h"
+
+// Einbinden der Variablen für Parkhaus, Warteschlange und Statistik
+static ParkingGarage g_garage;
+static Queue g_queue;
+static SimulationStats g_stats;
+static int g_next_id = 1;
 
 /**
  * @brief Initialisiert die Simulation.
  */
 void simulation_init(SimulationConfig config)
 {
+    srand(config.random_seed); //Zufalls-Seed setzen
+
+    //Parkhaus initialisieren
     // PSEUDOCODE:
-    srand(config.random_seed); // Zufalls-Seed setzen
-    // 2. Parkhaus initialisierenx
-    // 3. Warteschlange initialisieren
-    // 4. Statistikstruktur vorbereiten
+    // ok <- initGarage(&g_garage, config.total_spots)
+    // IF ok == false THEN
+    //     OUTPUT "Fehler: Parkhaus konnte nicht initialisiert werden"
+    //     STOP PROGRAM
+    // END IF
+    //
 
-    
-}
-
-
-/**
- * @brief Startet die Simulation.
- */
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-#include "simulation.h"
-
-/**
- * @brief Initialisiert die Simulation.
- */
-void simulation_init(SimulationConfig config)
-{
+    // Warteschlange initialisieren 
     // PSEUDOCODE:
-    // 1. Zufalls-Seed setzen
-    // 2. Parkhaus initialisieren
-    // 3. Warteschlange initialisieren
-    // 4. Statistikstruktur vorbereiten
+    // QueueInit(&g_queue)
+    //
 
-    srand(config.random_seed);
+    // Statistikstruktur vorbereiten (noch nicht umgesetzt) 
 }
-
 
 /**
  * @brief Startet die Simulation.
  */
 void simulation_run(SimulationConfig config)
 {
-    // PSEUDOCODE:
-    // 1. simulation_init(config)
-    // 2. Für jeden Zeitschritt:
-    //      simulation_step(config, step)
-    // 3. Am Ende: Gesamtauswertung ausgeben
+    simulation_init(config); // Simulation initialisieren 
 
-    simulation_init(config);
-
-    for(int step = 0; step < config.simulation_steps; step++)
+    // Für jeden Zeitschritt 
+    //for (int step = 0; step < config.simulation_steps; step++)
     {
         simulation_step(config, step);
     }
-}
 
-
-/**
- * @brief Führt einen einzelnen Zeitschritt aus.
- */
-void simulation_step(SimulationConfig config, int step)
-{
-    // PSEUDOCODE:
-
-    // 1. Prüfen ob neues Fahrzeug ankommt
-    //      -> Zufallszahl 0–99
-    //      -> Wenn < arrival_probability:
-    //              Fahrzeug erzeugen
-    //              Wenn freier Stellplatz:
-    //                     einparken
-    //              Sonst:
-    //                     in Warteschlange stellen
-
-    // 2. Parkdauer aller Fahrzeuge reduzieren
-
-    // 3. Fahrzeuge entfernen deren Parkdauer == 0
-
-    // 4. Fahrzeuge aus Warteschlange nachrücken lassen
-
-    // 5. Statistiken aktualisieren
-
-}
-
-
-/**
- * @brief Aktualisiert die Statistikwerte.
- */
-void simulation_update_stats(SimulationStats* stats, ParkingLot* parking, Queue* queue)
-{
-    // PSEUDOCODE:
-    // stats->cars_waiting = queue_size(queue);
-    // stats->occupancy_rate = belegte_plätze / gesamtplätze * 100;
-}
-
-
-/**
- * @brief Gibt Statistiken aus.
- */
-void simulation_print_stats(SimulationStats stats)
-{
-    printf("Zeitschritt: %d\n", stats.current_step);
-    printf("Angekommen: %d\n", stats.cars_arrived);
-    printf("Geparkt: %d\n", stats.cars_parked);
-    printf("Verlassen: %d\n", stats.cars_departed);
-    printf("Wartend: %d\n", stats.cars_waiting);
-    printf("Auslastung: %.2f%%\n", stats.occupancy_rate);
-
-    // PSEUDOCODE:
-    // Zusätzlich in Datei schreiben
+    // Am Ende: Gesamtauswertung ausgeben (noch nicht umgesetzt) 
 }
