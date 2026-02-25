@@ -39,7 +39,7 @@ void queue_init(queue *p_queue);
  *
  * @param[in,out] p_queue   Zeiger auf die Warteschlange
  * @param[in]     new_item  Fahrzeug, das eingefügt werden soll
- * @return                 1 bei Erfolg, 0 bei Fehler (z.B. malloc fehlgeschlagen)
+ * @return                  1 bei Erfolg, 0 bei Fehler
  */
 int queue_enqueue(queue *p_queue, vehicle new_item);
 
@@ -49,9 +49,27 @@ int queue_enqueue(queue *p_queue, vehicle new_item);
  *
  * @param[in,out] p_queue   Zeiger auf die Warteschlange
  * @param[out]    p_item    Zeiger auf Ausgabe-Fahrzeug
- * @return                 1 wenn ein Element entfernt wurde, sonst 0 (leer oder Fehler)
+ * @return                  1 wenn ein Element entfernt wurde, sonst 0 (leer oder Fehler)
  */
 int queue_dequeue(queue *p_queue, vehicle *p_item);
+
+
+/**
+ * @brief Gibt die Anzahl der Elemente in der Warteschlange zurück
+ *
+ * @param[in] p_queue Zeiger auf die Warteschlange
+ * @return            Anzahl der Elemente
+ */
+int queue_get_size(const queue *p_queue);
+
+
+/**
+ * @brief Prüft, ob die Warteschlange leer ist
+ *
+ * @param[in] p_queue Zeiger auf die Warteschlange
+ * @return            1 wenn leer, sonst 0
+ */
+int queue_is_empty(const queue *p_queue);
 
 
 #endif
