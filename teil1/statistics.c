@@ -43,12 +43,30 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step){
     //    p_stats->total_parked += p_step->parked_this_step;
     //    p_stats->sum_occupied += p_step->occupied_spots;
     //    p_stats->sum_queue += p_step->queue_length;
-    // 3) Ausgabe auf Konsole (evtl. mit extra Funktion)
-    // 4) Daten in Datei schreiben (evtl. mit extra Funktion)
-    //
+    // 3) Ausgabe auf Konsole (mit Formatierung)
+    // 4) Daten in Datei schreiben (mit Formatierung)
 }
 
-void stats_print(Stats *p_stats, int total_steps) {
+void stats_print(Stats *p_stats) {
     // Pseudocode:
-    // 
+    // 1) IF p_stats == NULL THEN
+    //        -> Fehlermeldung
+    //    END IF
+    // 2) Durchschnitt berechnen:
+    //    avg_occupied <- p_stats->sum_occupied / p_stats->total_steps;
+    //    avg_queue <- p_stats->sum_queue / p_stats->total_steps;
+    // 3) Ausgabe der Endstatistik auf Konsole (mit Formatierung)
+    // 4) Endstatistik in Datei schreiben (mit Formatierung)
+}
+
+void stats_close(Stats *p_stats) {
+    // Pseudocode:
+    // 1) IF p_stats == NULL THEN
+    //        -> Fehlermeldung
+    //    END IF
+    // 2) Datei schließen:
+    //    IF p_stats->p_file != NULL THEN
+    //        fclose(p_stats->p_file);
+    //        p_stats->p_file = NULL;
+    //    END IF
 }
