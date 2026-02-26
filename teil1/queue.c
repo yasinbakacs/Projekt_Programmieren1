@@ -5,6 +5,7 @@
 
 #include "queue.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void queue_init(queue *p_queue)
@@ -138,4 +139,30 @@ int queue_is_empty(const queue *p_queue)
     */
 
     return 1;
+}
+
+
+void queue_free(queue *p_queue)
+{
+    /*
+    FUNCTION queue_free(p_queue)
+
+        IF p_queue = NULL THEN
+            RETURN
+        END IF
+
+        WHILE p_queue.p_first != NULL DO
+
+            p_temp ← p_queue.p_first
+            p_queue.p_first ← p_temp.p_next
+
+            Speicher von p_temp freigeben
+
+        END WHILE
+
+        p_queue.p_last ← NULL
+        p_queue.size ← 0
+
+    END FUNCTION
+    */
 }
