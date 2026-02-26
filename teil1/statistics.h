@@ -28,8 +28,8 @@ typedef struct {
     int total_steps; //Gesamtzahl der Zeitschritte
     int total_departures; //Gesamtzahl der Abfahrten
     int total_parked; //Gesamtzahl geparkte Fahrzeuge
-    long sum_occupied; //Summe belegter Plätze für Durchschnitt später
-    long sum_queue; //Summe Warteschlangenlänge für Durchschnitt später
+    long sum_occupied; //Durchschnitt belegter Plätze
+    long sum_queue; //Durchschnitt Warteschlangenlänge
 }Stats;
 
 
@@ -43,48 +43,21 @@ typedef struct {
  * @param[in] filename Name der Ausgabedatei (muss gültig sein)
  *
  * @return true bei erfolgreicher Initialisierung und Dateieröffnung
- * @return false bei Fehler 
+ * @return false bei Fehler (z.B. ungültiger Dateiname oder Speicherfehler)
  */
 
 bool stats_init(Stats *p_stats, const char *filename);
 
 /**
  * @brief Schreibt die gesammelten Statistikdaten in die Ausgabedatei und schließt sie.
- *        Aktualisiert die Gesamtstatistik mit den Daten des aktuellen Zeitschritts.
  *
  * @param[in] p_stats Zeiger auf die zu finalisierende Statistik-Struktur
  * @param[in] p_step Zeiger auf StepStats
  *
  * @return true bei erfolgreichem Schreiben und Schließen der Datei
- * @return false bei Fehler 
+ * @return false bei Fehler (z.B. ungültiger Zeiger oder Dateifehler)
  */
 
 void stats_rec_step(Stats *p_stats, const StepStats *p_step);
-
-/**
- * @brief Schreibt die Endstatistik in die Ausgabedatei.
- *
- * @param[in] p_stats Zeiger auf die Statistik-Struktur
- * @param[in] total_steps Gesamtzahl der Zeitschritte der Simulation
- *
- * @return true bei erfolgreichem Schreiben der Endstatistik
- * @return false bei Fehler 
- */
-void stats_print(Stats *p_stats);
-
-/**
- * @brief Schließt die Statistik-Ausgabedatei
- *
- * @param[in] p_stats Zeiger auf die zu finalisierende Statistik-Struktur
- *
- * @return true bei erfolgreichem Schließen der Datei
- * @return false bei Fehler 
- */
-
-void stats_close(Stats *p_stats);
-
-#endif
-
-
 
 
