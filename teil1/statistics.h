@@ -28,8 +28,8 @@ typedef struct {
     int total_steps; //Gesamtzahl der Zeitschritte
     int total_departures; //Gesamtzahl der Abfahrten
     int total_parked; //Gesamtzahl geparkte Fahrzeuge
-    long avg_occupied; //Durchschnitt belegter Plätze
-    long avg_queue; //Durchschnitt Warteschlangenlänge
+    long sum_occupied; //Summe belegter Plätze für Durchschnitt später
+    long sum_queue; //Summe Warteschlangenlänge für Durchschnitt später
 }Stats;
 
 
@@ -50,6 +50,7 @@ bool stats_init(Stats *p_stats, const char *filename);
 
 /**
  * @brief Schreibt die gesammelten Statistikdaten in die Ausgabedatei und schließt sie.
+ *        Aktualisiert die Gesamtstatistik mit den Daten des aktuellen Zeitschritts.
  *
  * @param[in] p_stats Zeiger auf die zu finalisierende Statistik-Struktur
  * @param[in] p_step Zeiger auf StepStats
