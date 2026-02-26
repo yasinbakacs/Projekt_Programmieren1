@@ -69,7 +69,7 @@ void simulation_step(SimulationConfig config, int step)
     //     Fahrzeug erzeugen (abhängig von vehicle.h)
     //     v.id <- g_next_id
     //     g_next_id <- g_next_id + 1
-    //     v.remaining_time <- RANDOM_NUMBER(1..config.max_parking_time)
+    //     v.time_remaining <- RANDOM_NUMBER(1..config.max_parking_time)
     //     v.entry_time <- step
     //
     //     Einparken oder warten?
