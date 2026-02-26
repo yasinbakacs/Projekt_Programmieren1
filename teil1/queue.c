@@ -25,8 +25,7 @@ void queue_init(queue *p_queue)
 }
 
 
-int queue_enqueue(queue *p_queue,
-                  vehicle item)
+int queue_enqueue(queue *p_queue, vehicle item)
 {
     /*
     FUNCTION queue_enqueue(p_queue, item)
@@ -63,8 +62,7 @@ int queue_enqueue(queue *p_queue,
 }
 
 
-int queue_dequeue(queue *p_queue,
-                  vehicle *p_item)
+int queue_dequeue(queue *p_queue, vehicle *p_item)
 {
     /*
     FUNCTION queue_dequeue(p_queue, p_item)
@@ -100,4 +98,44 @@ int queue_dequeue(queue *p_queue,
     */
 
     return 0;
+}
+
+
+int queue_get_size(const queue *p_queue)
+{
+    /*
+    FUNCTION queue_get_size(p_queue)
+
+        IF p_queue = NULL THEN
+            RETURN 0
+        END IF
+
+        RETURN p_queue.size
+
+    END FUNCTION
+    */
+
+    return 0;
+}
+
+
+int queue_is_empty(const queue *p_queue)
+{
+    /*
+    FUNCTION queue_is_empty(p_queue)
+
+        IF p_queue = NULL THEN
+            RETURN 1
+        END IF
+
+        IF p_queue.size = 0 THEN
+            RETURN 1
+        ELSE
+            RETURN 0
+        END IF
+
+    END FUNCTION
+    */
+
+    return 1;
 }
