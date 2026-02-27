@@ -61,3 +61,27 @@ bool stats_init(Stats *p_stats, const char *filename);
 void stats_rec_step(Stats *p_stats, const StepStats *p_step);
 
 
+/**
+ * @brief Schreibt die Endstatistik in die Ausgabedatei.
+ *
+ * @param[in] p_stats Zeiger auf die Statistik-Struktur
+ * @param[in] total_steps Gesamtzahl der Zeitschritte der Simulation
+ *
+ * @return true bei erfolgreichem Schreiben der Endstatistik
+ * @return false bei Fehler 
+ */
+void stats_print(Stats *p_stats, int total_steps);
+
+/**
+ * @brief Schließt die Statistik-Ausgabedatei
+ *
+ * @param[in] p_stats Zeiger auf die zu finalisierende Statistik-Struktur
+ *
+ * @return true bei erfolgreichem Schließen der Datei
+ * @return false bei Fehler 
+ */
+
+void stats_close(Stats *p_stats);
+
+#endif
+
