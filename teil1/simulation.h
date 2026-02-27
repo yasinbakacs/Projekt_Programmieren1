@@ -70,7 +70,7 @@ void simulation_step(SimulationConfig config, int step);
  * @param p_garage  Parkhaus
  * @param p_queue   Warteschlange
  */
-void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, Queue *p_queue);
+void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, queue *p_queue);
 
 
 /**
