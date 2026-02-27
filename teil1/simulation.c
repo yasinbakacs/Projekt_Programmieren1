@@ -11,7 +11,7 @@
 
 // Einbinden der Variablen für Parkhaus, Warteschlange und Statistik
 static ParkingGarage g_garage;
-static Queue g_queue;
+static queue g_Queue;
 static SimulationStats g_stats;
 static int g_next_id = 1;
 
@@ -31,12 +31,12 @@ void simulation_init(SimulationConfig config)
     // END IF
     //
 
-    // Warteschlange initialisieren 
+    // Warteschlange initialisieren
     // PSEUDOCODE:
-    // QueueInit(&g_queue)
+    // queue_init(&g_queue)
     //
 
-    // Statistikstruktur vorbereiten (noch nicht umgesetzt) 
+    // Statistikstruktur vorbereiten (noch nicht umgesetzt)
 }
 
 /**
@@ -44,15 +44,15 @@ void simulation_init(SimulationConfig config)
  */
 void simulation_run(SimulationConfig config)
 {
-    simulation_init(config); // Simulation initialisieren 
+    simulation_init(config); // Simulation initialisieren
 
-    // Für jeden Zeitschritt 
+    // Für jeden Zeitschritt
     //for (int step = 0; step < config.simulation_steps; step++)
     {
         simulation_step(config, step);
     }
 
-    // Am Ende: Gesamtauswertung ausgeben (noch nicht umgesetzt) 
+    // Am Ende: Gesamtauswertung ausgeben (noch nicht umgesetzt)
 }
 
 /**
@@ -66,7 +66,7 @@ void simulation_step(SimulationConfig config, int step)
     // Prüfen ob neues Fahrzeug ankommt:
     // r <- RANDOM_NUMBER(0..99)
     // IF r < config.arrival_probability THEN
-    //     Fahrzeug erzeugen (abhängig von vehicle.h)
+    //     v ← vehicle_create(&g_next_id, config.max_parking_time, step)
     //     v.id <- g_next_id
     //     g_next_id <- g_next_id + 1
     //     v.time_remaining <- RANDOM_NUMBER(1..config.max_parking_time)
@@ -80,7 +80,7 @@ void simulation_step(SimulationConfig config, int step)
     //             g_stats.cars_parked <- g_stats.cars_parked + 1
     //         END IF
     //     ELSE
-    //         QueueEnqueue(&g_queue, v)   // Name abhängig von queue.h
+    //         queue_enqueue(&g_queue, v)
     //     END IF
     // END IF
     //
@@ -89,8 +89,8 @@ void simulation_step(SimulationConfig config, int step)
     // processDepartures(&g_garage, &departures_this_step)
     //
     // Warteschlange nachrücken lassen:
-    // WHILE findFreeSpot(&g_garage) != -1 AND QueueIsEmpty(&g_queue) == false DO
-    //     next <- QueueDequeue(&g_queue)
+    // WHILE findFreeSpot(&g_garage) != -1 AND queue_is_empty(&g_queue) == false DO
+    //     next <- queue_dequeue(&g_queue)
     //     ok <- parkVehicle(&g_garage, next)
     // END WHILE
 
@@ -100,7 +100,7 @@ void simulation_step(SimulationConfig config, int step)
 /**
  * @brief Aktualisiert die Statistikwerte.
  */
-void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, Queue *p_queue)
+void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, queue *p_queue)
 {
     // Statistiken aktualisieren
 }
@@ -111,4 +111,4 @@ void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, 
 void simulation_print_stats(SimulationStats stats)
 {
     // Statistiken ausgeben
-} 
+}
