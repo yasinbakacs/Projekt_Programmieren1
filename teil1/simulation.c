@@ -47,10 +47,9 @@ void simulation_run(SimulationConfig config)
     simulation_init(config); // Simulation initialisieren
 
     // Für jeden Zeitschritt
-    //for (int step = 0; step < config.simulation_steps; step++)
-    {
-        simulation_step(config, step);
-    }
+    // FOR step ← 0 TO config.simulation_steps - 1 DO
+    //     simulation_step(config, step)
+    // END FOR
 
     // Am Ende: Gesamtauswertung ausgeben (noch nicht umgesetzt)
 }
