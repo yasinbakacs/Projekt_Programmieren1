@@ -69,4 +69,63 @@ int main(void)
     config.simulation_steps = 0;
     config.arrival_probability = 0;
     config.random_seed = 0;
+
+
+    if (read_int("Anzahl Stellplaetze: ", &config.total_spots) == 0)
+    {
+        printf("Ungueltige Eingabe\n");
+        return 1;
+    }
+
+    if (read_int("Maximale Parkdauer: ", &config.max_parking_time) == 0)
+    {
+        printf("Ungueltige Eingabe\n");
+        return 1;
+    }
+
+    if (read_int("Anzahl Zeitschritte: ", &config.simulation_steps) == 0)
+    {
+        printf("Ungueltige Eingabe\n");
+        return 1;
+    }
+
+    if (read_int("Ankunftswahrscheinlichkeit (0-100): ", &config.arrival_probability) == 0)
+    {
+        printf("Ungueltige Eingabe\n");
+        return 1;
+    }
+
+    if (read_int("Zufalls-Seed: ", &config.random_seed) == 0)
+    {
+        printf("Ungueltige Eingabe\n");
+        return 1;
+    }
+
+    if (config.total_spots <= 0)
+    {
+        printf("Ungueltige Eingabe: Anzahl Stellplaetze muss > 0 sein\n");
+        return 1;
+    }
+
+    if (config.max_parking_time <= 0)
+    {
+        printf("Ungueltige Eingabe: Maximale Parkdauer muss > 0 sein\n");
+        return 1;
+    }
+
+    if (config.simulation_steps <= 0)
+    {
+        printf("Ungueltige Eingabe: Anzahl Zeitschritte muss > 0 sein\n");
+        return 1;
+    }
+
+    if ((config.arrival_probability < 0) || (config.arrival_probability > 100))
+    {
+        printf("Ungueltige Eingabe: Ankunftswahrscheinlichkeit muss 0...100 sein\n");
+        return 1;
+    }
+
+    simulation_run(config);
+
+    return 0;
 }
