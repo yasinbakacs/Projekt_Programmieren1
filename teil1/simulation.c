@@ -43,7 +43,7 @@ void simulation_init(SimulationConfig config)
 
     // Statistikstruktur initialisieren
     // PSEUDOCODE:
-    // ok <- stats_init(&g_step_stats, "simulation_stats.txt")
+    // ok <- stats_init(&g_stats, "simulation_stats.txt")
     // IF ok == false THEN
     //     OUTPUT "Fehler: Statistik konnte nicht initialisiert werden"
     //     STOP PROGRAM
@@ -64,8 +64,8 @@ void simulation_run(SimulationConfig config)
     // END FOR
 
     // Gesamtauswertung ausgeben:
-    // stats_print(&g_step_stats)
-    // stats_close(&g_step_stats)
+    // stats_print(&g_stats)
+    // stats_close(&g_stats)
 }
 
 /**
@@ -74,7 +74,7 @@ void simulation_run(SimulationConfig config)
 void simulation_step(SimulationConfig config, int step)
 {
     // PSEUDOCODE:
-    // g_stats.current_step <- step
+    // parked_this_step <- 0
     //
     // Prüfen ob neues Fahrzeug ankommt:
     // r <- RANDOM_NUMBER(0..99)
@@ -90,7 +90,7 @@ void simulation_step(SimulationConfig config, int step)
     //     IF free_index != -1 THEN
     //         ok <- parkVehicle(&g_garage, v)
     //         IF ok == true THEN
-    //             g_stats.cars_parked <- g_stats.cars_parked + 1
+    //             parked_this_step <- parked_this_step + 1
     //         END IF
     //     ELSE
     //         queue_enqueue(&g_queue, v)
@@ -115,5 +115,5 @@ void simulation_step(SimulationConfig config, int step)
     // step_stats.queue_length <- queue_get_size(&g_queue)
     // step_stats.departures_this_step <- departures_this_step
     // step_stats.parked_this_step <- parked_this_step
-    // stats_rec_step(&g_step_stats, &step_stats)
+    // stats_rec_step(&g_stats)
 }
