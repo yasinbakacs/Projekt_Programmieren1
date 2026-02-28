@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+#include "statistics.h"
 #include "simulation.h"
 
 // Einbinden der Variablen für Parkhaus, Warteschlange und Statistik
@@ -14,6 +16,7 @@ static ParkingGarage g_garage;
 static queue g_Queue;
 static SimulationStats g_stats;
 static int g_next_id = 1;
+static Stats g_step_stats;
 
 /**
  * @brief Initialisiert die Simulation.
@@ -33,10 +36,19 @@ void simulation_init(SimulationConfig config)
 
     // Warteschlange initialisieren
     // PSEUDOCODE:
-    // queue_init(&g_queue)
-    //
+    // ok <- queue_init(&g_queue)
+    //IF ok == false THEN
+    //     OUTPUT "Fehler: Warteschlange konnte nicht initialisiert werden"
+    //     STOP PROGRAM
+    // END IF
 
-    // Statistikstruktur vorbereiten (noch nicht umgesetzt)
+    // Statistikstruktur initialisieren
+    // PSEUDOCODE:
+    // ok <- stats_init(&g_stats, "simulation_stats.txt")
+    // IF ok == false THEN
+    //     OUTPUT "Fehler: Statistik konnte nicht initialisiert werden"
+    //     STOP PROGRAM
+    // END IF
 }
 
 /**
@@ -92,8 +104,10 @@ void simulation_step(SimulationConfig config, int step)
     //     next <- queue_dequeue(&g_queue)
     //     ok <- parkVehicle(&g_garage, next)
     // END WHILE
-
-    //Statistiken aktualisieren + ausgeben (noch nicht umgesetzt)
+    //
+    //Statistiken aktualisieren + ausgeben:
+    // step_stats.step <- step
+    // step_stats.occupied_spots <- g_garage.occupiedCount
 }
 
 /**
