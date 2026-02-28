@@ -13,10 +13,9 @@
 
 // Einbinden der Variablen für Parkhaus, Warteschlange und Statistik
 static ParkingGarage g_garage;
-static queue g_Queue;
-static SimulationStats g_stats;
+static queue g_queue;
 static int g_next_id = 1;
-static Stats g_step_stats;
+static Stats g_stats;
 
 /**
  * @brief Initialisiert die Simulation.
@@ -44,11 +43,12 @@ void simulation_init(SimulationConfig config)
 
     // Statistikstruktur initialisieren
     // PSEUDOCODE:
-    // ok <- stats_init(&g_stats, "simulation_stats.txt")
+    // ok <- stats_init(&g_step_stats, "simulation_stats.txt")
     // IF ok == false THEN
     //     OUTPUT "Fehler: Statistik konnte nicht initialisiert werden"
     //     STOP PROGRAM
     // END IF
+    // g_stats.total_steps <- config.simulation_steps
 }
 
 /**
@@ -63,7 +63,9 @@ void simulation_run(SimulationConfig config)
     //     simulation_step(config, step)
     // END FOR
 
-    // Am Ende: Gesamtauswertung ausgeben (noch nicht umgesetzt)
+    // Gesamtauswertung ausgeben:
+    // stats_print(&g_step_stats)
+    // stats_close(&g_step_stats)
 }
 
 /**
@@ -106,22 +108,12 @@ void simulation_step(SimulationConfig config, int step)
     // END WHILE
     //
     //Statistiken aktualisieren + ausgeben:
+    StepStats step_stats;
+    // PSEUDOCODE:
     // step_stats.step <- step
     // step_stats.occupied_spots <- g_garage.occupiedCount
-}
-
-/**
- * @brief Aktualisiert die Statistikwerte.
- */
-void simulation_update_stats(SimulationStats *p_stats, ParkingGarage *p_garage, queue *p_queue)
-{
-    // Statistiken aktualisieren
-}
-
-/**
- * @brief Gibt Statistiken aus.
- */
-void simulation_print_stats(SimulationStats stats)
-{
-    // Statistiken ausgeben
+    // step_stats.queue_length <- queue_get_size(&g_queue)
+    // step_stats.departures_this_step <- departures_this_step
+    // step_stats.parked_this_step <- parked_this_step
+    // stats_rec_step(&g_step_stats, &step_stats)
 }
