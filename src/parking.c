@@ -47,10 +47,11 @@ bool parkVehicle(ParkingGarage *garage, vehicle v) {
     //       OUTPUT "Fehler: Garage ist NULL"
     //       RETURN false (Fehler)
     //    END IF
-    // 2) freien Platz suchen (mit findFreeSpot - Funktion)
-    // 3 Wenn kein freier Platz gefunden:
-    //      -> Rückgabe false (kein Platz frei)
-    // 4) Wenn freien Platz gefunden:
+    // 2) free index <- findFreeSpot(garage)
+    // 3) IF free index == -1 THEN
+    //      RETURN false
+    //    END IF
+    // 4) Platz belegen:
     //     - garage->spots[freierPlatz].occupied = true; (Platz belegen)
     //     - garage->spots[freierPlatz].vehicle = &v; (Fahrzeug zuweisen)
     //     - garage->occupiedCount++; (Belegungszähler erhöhen)
