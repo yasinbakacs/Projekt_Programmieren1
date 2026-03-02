@@ -104,10 +104,30 @@ Erfasst und speichert:
 - Verwendung von Header- und C-Dateien  
 - Algorithmen in strukturiertem Pseudocode  
 - Verwendung der vorgegebenen Schlüsselwörter:
-  - FUNCTION
-  - IF ... THEN
-  - FOR ... DO
-  - WHILE ... DO
-  - RETURN
-  - OUTPUT
-  - <-
+  - FUNCTION  
+  - IF ... THEN  
+  - FOR ... DO  
+  - WHILE ... DO  
+  - RETURN  
+  - OUTPUT  
+  - ←
+
+---
+
+## Geplante Statistiken
+
+- Anzahl belegter Stellplätze
+- Länge der Warteschlange
+- Anzahl Ankünfte
+- Anzahl Abfahrten
+- Durchschnittliche Auslastung
+
+---
+
+## Flussdiagramme
+
+Drei zentrale Funktionen wurden als Flussdiagramme modelliert:
+
+- simulation_step
+- parkingVehicle
+- processDepartures
