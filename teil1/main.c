@@ -51,11 +51,11 @@ int main(void)
             RETURN 1
         END IF
 
-        config.total_spots ← total_spots
-        config.max_parking_time ← max_parking_time
-        config.simulation_steps ← simulation_steps
-        config.arrival_probability ← arrival_probability
-        config.random_seed ← random_seed
+        config.total_spots <- total_spots
+        config.max_parking_time <- max_parking_time
+        config.simulation_steps <- simulation_steps
+        config.arrival_probability <- arrival_probability
+        config.random_seed <- random_seed
 
         simulation_run(config)
 
