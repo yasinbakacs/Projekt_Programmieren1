@@ -48,3 +48,49 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
    - Ausgabe_step_Konsole.txt
    - Ausgabe_gesamt_Konsole.txt
    - flowcharts
+
+---
+
+## Modulübersicht
+
+### vehicle
+Repräsentiert ein einzelnes Fahrzeug
+Enthält:
+- ID
+- Einfahrtszeit
+- Verbleibende Parkdauer
+
+---
+
+### queue
+Dynamische Warteschlange
+Verwaltet Fahrzeuge, wenn das Parkhaus voll ist.
+
+---
+
+### parking
+Verwaltet das Parkhaus:
+- Initialisierung der Stellplätze
+- Einparken von Fahrzeugen
+- Verarbeitung von Abfahrten
+- Verwaltung der belegten Plätze
+
+---
+
+### simulation
+Steuert den gesamten Ablauf:
+- Initialisierung
+- Zeitschleife
+- Fahrzeugankünfte
+- Warteschlangen-Logik
+- Statistikaktualisierung
+
+---
+
+### statistics
+Erfasst und speichert:
+- Belegte Stellplätze
+- Warteschlangenlänge
+- Anzahl Abfahrten
+- Anzahl Einparkvorgänge
+- Durchschnittswerte
