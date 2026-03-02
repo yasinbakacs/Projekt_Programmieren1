@@ -5,7 +5,7 @@ Abfahrten: x
 Neu Eingeparkt: x     
 Besetzte Plaetze: x     
 Laenge Warteschlange: x  
-
+Auslastung in Prozent: x
 -----------------------------------------------------------------------------------------------------------------------------------  
 Statistiken fuer Step x + 1:
 
@@ -13,5 +13,6 @@ Abfahrten: y
 Neu Eingeparkt: y     
 Besetzte Plaetze: y     
 Laenge Warteschlange: y
+Auslastung in Prozent: y
 -----------------------------------------------------------------------------------------------------------------------------------
 ...
