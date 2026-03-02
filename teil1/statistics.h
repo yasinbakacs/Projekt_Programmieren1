@@ -70,7 +70,7 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step);
  * @return true bei erfolgreichem Schreiben der Endstatistik
  * @return false bei Fehler 
  */
-void stats_print(Stats *p_stats, int total_steps);
+void stats_print(Stats *p_stats);
 
 /**
  * @brief Schließt die Statistik-Ausgabedatei
