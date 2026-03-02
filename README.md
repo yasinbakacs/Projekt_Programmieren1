@@ -131,3 +131,19 @@ Drei zentrale Funktionen wurden als Flussdiagramme modelliert:
 - simulation_step
 - parkingVehicle
 - processDepartures
+
+---
+
+## Teammitglieder
+
+- Batu Özdemir
+- Yasin Bakacs
+- Sefa Yilmaz
+
+---
+
+## Entwicklungsumgebung
+
+- Programmiersprache: C  
+- Entwicklung in Visual Studio Code  
+- Arbeitsverwaltung mit GitHub
