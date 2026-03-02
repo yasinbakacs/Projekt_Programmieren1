@@ -91,12 +91,9 @@ Steuert den gesamten Ablauf:
 ---
 
 ### statistics
-Erfasst und speichert:
-- Belegte Stellplätze
-- Warteschlangenlänge
-- Anzahl Abfahrten
-- Anzahl Einparkvorgänge
-- Durchschnittswerte
+Das statistics-Modul übernimmt die analytische Auswertung der Simulation.  
+Es sammelt Zustandsdaten pro Zeitschritt, berechnet aggregierte Kennzahlen
+über die gesamte Laufzeit und stellt diese strukturiert für Konsole und Datei bereit.
 
 ---
 
@@ -119,11 +116,11 @@ Erfasst und speichert:
 
 ## Geplante Statistiken
 
-- Anzahl belegter Stellplätze
-- Länge der Warteschlange
-- Anzahl Ankünfte
-- Anzahl Abfahrten
-- Durchschnittliche Auslastung
+- Anzahl belegter Stellplätze (pro Zeitschritt und gesamt Durchschnitt)
+- Länge der Warteschlange (pro Zeitschritt und gesamt Durchschnitt)
+- Anzahl Ankünfte (pro Zeitschritt und gesamt)
+- Anzahl Abfahrten (pro Zeitschritt und gesamt)
+- Auslastung in Prozent (pro Zeitschritt und gesamt Durchschnitt)
 
 ---
 
