@@ -106,3 +106,7 @@ Begründung:
 Diese Statistik gibt Aufschluss darüber, wie oft bzw wie lange Fahrzeuge warten 
 müssen, um einen Parkplatz zu erhalten.
 
+## 4. Nutzung der Statistiken
+Die gesammelten Statistiken werden dann jeweils in die Konsole ausgegeben, um die Leistung 
+des Parkhauses direkt nach der Simulation zu bewerten. Sie werden außerdem auch in einer Datei
+gespeichert, um eine spätere Analyse und Vergleichbarkeit mit anderen Simulationen zu ermöglichen.
