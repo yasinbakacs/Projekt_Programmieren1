@@ -112,6 +112,7 @@ void simulation_step(SimulationConfig config, int step)
     // PSEUDOCODE:
     // step_stats.step <- step
     // step_stats.occupied_spots <- g_garage.occupiedCount
+    // step_stats.utilization_percent <- (g_garage.occupiedCount * 100) / g_garage.totalSpots
     // step_stats.queue_length <- queue_get_size(&g_queue)
     // step_stats.departures_this_step <- departures_this_step
     // step_stats.parked_this_step <- parked_this_step

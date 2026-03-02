@@ -20,6 +20,7 @@ typedef struct {
     int queue_length; //Länge Warteschlange
     int departures_this_step; //Anzahl der Abfahrten in diesem Zeitschritt
     int parked_this_step; //Anzahl der Fahrzeuge, die in diesem Zeitschritt einparken
+    int utilization_percent; //Auslastung in Prozent
 } StepStats;
 
 //Gesamtstatistik über die gesamte Simulation
