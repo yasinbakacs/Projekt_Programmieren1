@@ -94,3 +94,20 @@ Erfasst und speichert:
 - Anzahl Abfahrten
 - Anzahl Einparkvorgänge
 - Durchschnittswerte
+
+---
+
+## Programmentwurf (Teil 1)
+
+- Modularer Aufbau  
+- Klare Trennung von Verantwortlichkeiten  
+- Verwendung von Header- und C-Dateien  
+- Algorithmen in strukturiertem Pseudocode  
+- Verwendung der vorgegebenen Schlüsselwörter:
+  - FUNCTION
+  - IF ... THEN
+  - FOR ... DO
+  - WHILE ... DO
+  - RETURN
+  - OUTPUT
+  - <-
