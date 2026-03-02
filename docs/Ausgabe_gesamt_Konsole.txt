@@ -1,0 +1,10 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+Die Simulation ist abgeschlossen. 
+Insgesamt sind:
+x Steps simuliert worden.
+x Autos ausgefahren.
+x Autos eingeparkt.
+
+Im Durchschnitt waren:
+x Parkplaetze besetzt. 
+x Autos in der Warteschlange
