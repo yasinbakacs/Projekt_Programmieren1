@@ -44,10 +44,13 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
 
 
 - /docs
-   - statistics_uebersciht.md
+   - statistics_uebersicht.md
    - Ausgabe_step_Konsole.txt
    - Ausgabe_gesamt_Konsole.txt
-   - flowcharts
+   - flowcharts/
+      - simulation_step_flowchart.drawio.png
+      - parkingVehicle_flowchart.drawio.png
+      - processDepartures_flowchart.drawio.png
 
 ---
 
