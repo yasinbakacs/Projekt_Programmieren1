@@ -12,12 +12,15 @@
 
 bool initGarage(ParkingGarage *garage, int capacity) {
     // Pseudocode:
-    // 1) Prüfen: garage != NULL und capacity > 0
+    // 1) IF garage == NULL || capacity > 0 THEN
+    //       OUTPUT "Fehler: Ungültige Parameter für initGarage"
+    //       RETURN false (Fehler)
+    //    END IF
     // 2) garage->capacity = capacity; (Eingegebene Größe zuweisen)
     // 3) garage->occupiedCount = 0; (Start Belegung = 0)
     // 4) Alle Stellplatze:
-    //    occupied = false; (Alle Plätze frei)
-    //    vehicle = NULL; (Keine Fahrzeuge auf den Plätzen)
+    //    occupied <- false; (Alle Plätze frei)
+    //    vehicle <- NULL; (Keine Fahrzeuge auf den Plätzen)
     // 5) Rückgabe: 
     //    true bei Erfolg, false bei Fehler (z.B. ungültige Kapazität oder Speicherfehler)
     return false; // Platzhalter Rückgabewert
@@ -25,18 +28,25 @@ bool initGarage(ParkingGarage *garage, int capacity) {
 
 int findFreeSpot(const ParkingGarage *garage) {
     // Pseudocode:
-    // 1) Prüfen: garage != NULL
-    // 2) Für i = 0 bis capacity - 1:
+    // 1) IF garage == NULL THEN
+    //       OUTPUT "Fehler: Garage ist NULL"
+    //       RETURN -1 (Fehler)
+    //    END IF
+    // 2) FOR i <- 0 TO capacity - 1 DO
     //      - Wenn garage->spots[i].occupied == false:
     //          -> Rückgabe von i (Index des freien Platzes)
     //      - Wenn kein Platz frei
     //          -> Rückgabe -1
+    //    END FOR
     return -1; // Platzhalter Rückgabewert
 }
 
 bool parkVehicle(ParkingGarage *garage, vehicle v) {
     // Pseudocode:
-    // 1) Prüfen: garage != NULL
+    // 1) IF garage == NULL THEN
+    //       OUTPUT "Fehler: Garage ist NULL"
+    //       RETURN false (Fehler)
+    //    END IF
     // 2) freien Platz suchen (mit findFreeSpot - Funktion)
     // 3 Wenn kein freier Platz gefunden:
     //      -> Rückgabe false (kein Platz frei)
@@ -50,16 +60,21 @@ bool parkVehicle(ParkingGarage *garage, vehicle v) {
 
 void processDepartures(ParkingGarage *garage, int *departuresThisStep) {
     // Pseudocode:
-    // 1) Prüfen: garage != NULL und departuresThisStep != NULL
+    // 1) IF garage == NULL || departuresThisStep == NULL THEN
+    //       OUTPUT "Fehler: Ungültige Parameter für processDepartures"
+    //       RETURN
+    //    END IF
     // 2) departuresThisStep auf 0 setzen (Anzahl der Abfahrten dieses Schritts zurücksetzen)
-    // 3) Für i = 0 bis capacity - 1:
-    //      - Wenn garage->spots[i].occupied == true:
+    // 3) FOR i = 0 TO capacity - 1 DO
+    //      - IF garage->spots[i].occupied == true THEN:
     //          - garage->spots[i].vehicle->time_remaining -- ; (Verbleibende Zeit des Fahrzeugs verringern)
-    //          - Wenn garage->spots[i].vehicle->time_remaining <= 0:
+    //          - IF garage->spots[i].vehicle->time_remaining <= 0 THEN:
     //              -> Fahrzeug verlässt den Platz
     //              -> garage->spots[i].occupied = false; (Platz freigeben)
     //              -> garage->spots[i].vehicle = NULL; (Fahrzeug entfernen)
     //              -> garage->occupiedCount--; (Belegungszähler verringern)
     //              -> departuresThisStep++; (Abfahrten dieses Schritts erhöhen)
+    //          END IF
+    //      END IF
     }
 

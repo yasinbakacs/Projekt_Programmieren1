@@ -21,13 +21,13 @@ vehicle vehicle_create(int *p_next_id, int max_duration, int current_time)
             RETURN leeres_vehicle
         END IF
 
-        id ← *p_next_id
-        *p_next_id ← *p_next_id + 1
+        id <- *p_next_id
+        *p_next_id <- *p_next_id + 1
 
-        r ← Zufallszahl zwischen 0 und max_duration - 1
-        remaining ← r + 1
+        r <- Zufallszahl zwischen 0 und max_duration - 1
+        remaining <- r + 1
 
-        entry_time ← current_time
+        entry_time <- current_time
 
         RETURN vehicle(id, remaining, entry_time)
 

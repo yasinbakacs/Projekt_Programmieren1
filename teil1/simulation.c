@@ -59,7 +59,7 @@ void simulation_run(SimulationConfig config)
     simulation_init(config); // Simulation initialisieren
 
     // Für jeden Zeitschritt
-    // FOR step ← 0 TO config.simulation_steps - 1 DO
+    // FOR step <- 0 TO config.simulation_steps - 1 DO
     //     simulation_step(config, step)
     // END FOR
 
@@ -79,7 +79,7 @@ void simulation_step(SimulationConfig config, int step)
     // Prüfen ob neues Fahrzeug ankommt:
     // r <- RANDOM_NUMBER(0..99)
     // IF r < config.arrival_probability THEN
-    //     v ← vehicle_create(&g_next_id, config.max_parking_time, step)
+    //     v <- vehicle_create(&g_next_id, config.max_parking_time, step)
     //     v.id <- g_next_id
     //     g_next_id <- g_next_id + 1
     //     v.time_remaining <- RANDOM_NUMBER(1..config.max_parking_time)
