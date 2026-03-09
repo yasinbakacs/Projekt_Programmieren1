@@ -11,6 +11,26 @@
 #include <stdio.h>
 
 bool initGarage(ParkingGarage *garage, int capacity) {
+    if (garage == NULL || capacity <= 0){
+        printf("Parkhaus konnte nicht initialisiert werden.\n");
+        return false;
+    }
+
+    garage->spots = malloc(sizeof(ParkingSpot) * capacity);
+    if (garage->spots == NULL){
+        printf("Speicher allokation fehlgeschlagen.\n");
+        return false
+    }
+
+    garage->capacity = capacity;
+    garage->occupiedCount = 0;
+
+    for (int  = 0; i < capacity; i++){
+        garage->spots[i].occupied = false;
+        garage->spots[i].vehicle = NULL;
+    }
+
+    return true;
     // Pseudocode:
     // 1) IF garage == NULL || capacity > 0 THEN
     //       OUTPUT "Fehler: Ungültige Parameter für initGarage"
@@ -27,6 +47,17 @@ bool initGarage(ParkingGarage *garage, int capacity) {
 }
 
 int findFreeSpot(const ParkingGarage *garage) {
+    if (garage == NULL){
+        printf("Parkhaus ist NULL.\n");
+        return -1;
+    }  
+
+    for (int i = 0; i < garage->capacity; i++){
+        if (garage->spots[i].occupied = false){
+            return i;
+        }
+    }
+    return -1; // Wenn kein freier Parkplatz gefunden wird
     // Pseudocode:
     // 1) IF garage == NULL THEN
     //       OUTPUT "Fehler: Garage ist NULL"
@@ -38,10 +69,21 @@ int findFreeSpot(const ParkingGarage *garage) {
     //      - Wenn kein Platz frei
     //          -> Rückgabe -1
     //    END FOR
-    return -1; // Platzhalter Rückgabewert
+ 
 }
 
 bool parkVehicle(ParkingGarage *garage, vehicle v) {
+    if (garage == NULL){
+        printf("Parkhaus ist NULL.\n");
+        return false;
+    }
+    int freierPlatz = findFreeSpot(garage);
+    
+    if (freierPlatz == -1){
+        return false;
+    }
+
+    garage->spots[freierPlatz].occupied = true;
     // Pseudocode:
     // 1) IF garage == NULL THEN
     //       OUTPUT "Fehler: Garage ist NULL"
