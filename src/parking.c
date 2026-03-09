@@ -19,13 +19,13 @@ bool initGarage(ParkingGarage *garage, int capacity) {
     garage->spots = malloc(sizeof(ParkingSpot) * capacity);
     if (garage->spots == NULL){
         printf("Speicher allokation fehlgeschlagen.\n");
-        return false
+        return false;
     }
 
     garage->capacity = capacity;
     garage->occupiedCount = 0;
 
-    for (int  = 0; i < capacity; i++){
+    for (int i = 0; i < capacity; i++){
         garage->spots[i].occupied = false;
         garage->spots[i].vehicle = NULL;
     }
@@ -43,7 +43,6 @@ bool initGarage(ParkingGarage *garage, int capacity) {
     //    vehicle <- NULL; (Keine Fahrzeuge auf den Plätzen)
     // 5) Rückgabe: 
     //    true bei Erfolg, false bei Fehler (z.B. ungültige Kapazität oder Speicherfehler)
-    return false; // Platzhalter Rückgabewert
 }
 
 int findFreeSpot(const ParkingGarage *garage) {
@@ -53,7 +52,7 @@ int findFreeSpot(const ParkingGarage *garage) {
     }  
 
     for (int i = 0; i < garage->capacity; i++){
-        if (garage->spots[i].occupied = false){
+        if (garage->spots[i].occupied == false){
             return i;
         }
     }
@@ -83,7 +82,12 @@ bool parkVehicle(ParkingGarage *garage, vehicle v) {
         return false;
     }
 
+
     garage->spots[freierPlatz].occupied = true;
+    garage->spots[freierPlatz].vehicle = &v;
+    garage->occupiedCount++;
+
+    return true;
     // Pseudocode:
     // 1) IF garage == NULL THEN
     //       OUTPUT "Fehler: Garage ist NULL"
@@ -98,10 +102,29 @@ bool parkVehicle(ParkingGarage *garage, vehicle v) {
     //     - garage->spots[freierPlatz].vehicle = &v; (Fahrzeug zuweisen)
     //     - garage->occupiedCount++; (Belegungszähler erhöhen)
     //     -> Rückgabe true (Fahrzeug erfolgreich eingeparkt)
-    return false; // Platzhalter Rückgabewert
+    
 }
 
 void processDepartures(ParkingGarage *garage, int *departuresThisStep) {
+    if (garage == NULL || departuresThisStep == NULL){
+        printf("Ungültige Parameter processDep.\n");
+        return;
+    }
+
+    *departuresThisStep = 0;
+
+    for (int i = 0; i < garage->capacity; i++){
+        if (garage->spots[i].occupied == true){
+            garage->spots[i].vehicle->time_remaining--; // Falls Parkplatz belegt, wird Zeit um einen step runtergezählt 
+            if (garage->spots[i].vehicle->time_remaining <= 0){
+                garage->spots[i].occupied = false; // Falls Zeit 0 wird Auto aus PArkhaus gefahren
+                garage->spots[i].vehicle = NULL;
+
+                garage->occupiedCount--;
+                (*departuresThisStep++);
+            }
+        }
+    }
     // Pseudocode:
     // 1) IF garage == NULL || departuresThisStep == NULL THEN
     //       OUTPUT "Fehler: Ungültige Parameter für processDepartures"
