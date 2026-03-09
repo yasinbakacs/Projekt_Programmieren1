@@ -84,4 +84,17 @@ bool parkVehicle(ParkingGarage *garage, vehicle v);
  */
 void processDepartures(ParkingGarage *garage, int *departuresThisStep);
 
+
+/**
+ * @brief Befreit den ganzen Speicher des Parkhauses.
+ * 
+ * Der Speicher aller noch besetzten Parkplätze am Ende der Simulation
+ * wird befreit.
+ * 
+ * @param[in] garage Zeiger auf das Parkhaus
+ * 
+ */
+void freeGarage(ParkingGarage *garage);
+
+
 #endif // PARKING_H

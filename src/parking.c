@@ -84,7 +84,13 @@ bool parkVehicle(ParkingGarage *garage, vehicle v) {
 
 
     garage->spots[freierPlatz].occupied = true;
-    garage->spots[freierPlatz].vehicle = &v;
+
+    garage->spots[freierPlatz].vehicle = malloc(sizeof(vehicle));
+    if (garage->spots[freierPlatz].vehicle == NULL){
+        printf("Speicher allokation fehlgeschlagen");
+        return false;
+    }
+    *garage->spots[freierPlatz].vehicle = v;
     garage->occupiedCount++;
 
     return true;
@@ -118,10 +124,11 @@ void processDepartures(ParkingGarage *garage, int *departuresThisStep) {
             garage->spots[i].vehicle->time_remaining--; // Falls Parkplatz belegt, wird Zeit um einen step runtergezählt 
             if (garage->spots[i].vehicle->time_remaining <= 0){
                 garage->spots[i].occupied = false; // Falls Zeit 0 wird Auto aus PArkhaus gefahren
+                free(garage->spots[i].vehicle);
                 garage->spots[i].vehicle = NULL;
 
                 garage->occupiedCount--;
-                (*departuresThisStep++);
+                (*departuresThisStep)++;
             }
         }
     }
@@ -144,3 +151,21 @@ void processDepartures(ParkingGarage *garage, int *departuresThisStep) {
     //      END IF
     }
 
+    void freeGarage(ParkingGarage *garage){
+        if (garage == NULL){
+            printf("Parkhaus ist NULL.\n");
+            return;
+        }
+
+        for (int i = 0; i < garage->capacity; i++){
+            if (garage->spots[i].vehicle != NULL){
+                free(garage->spots[i].vehicle);
+                garage->spots[i].vehicle = NULL;
+            }
+            garage->spots[i].occupied = false;
+        }
+        free(garage->spots);
+        garage->spots = NULL;
+        garage->capacity = 0;
+        garage->occupiedCount = 0;
+    }
