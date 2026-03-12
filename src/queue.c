@@ -136,6 +136,17 @@ int queue_get_size(const queue *p_queue)
 
 int queue_is_empty(const queue *p_queue)
 {
+    if (p_queue == NULL)
+    {
+        return 1;
+    }
+
+    if (p_queue->size == 0)
+    {
+        return 1;
+    }
+
+    return 0;
     /*
     FUNCTION queue_is_empty(p_queue)
 
@@ -158,6 +169,22 @@ int queue_is_empty(const queue *p_queue)
 
 void queue_free(queue *p_queue)
 {
+    queue_node *p_temp = NULL;
+
+    if (p_queue == NULL)
+    {
+        return;
+    }
+
+    while (p_queue->p_first != NULL)
+    {
+        p_temp = p_queue->p_first;
+        p_queue->p_first = p_queue->p_first->p_next;
+        free(p_temp);
+    }
+
+    p_queue->p_last = NULL;
+    p_queue->size = 0;
     /*
     FUNCTION queue_free(p_queue)
 
