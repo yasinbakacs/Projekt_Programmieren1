@@ -10,6 +10,14 @@
 
 void queue_init(queue *p_queue)
 {
+    if (p_queue == NULL)
+    {
+        return;
+    }
+
+    p_queue->p_first = NULL;
+    p_queue->p_last = NULL;
+    p_queue->size = 0;
     /*
     FUNCTION queue_init(p_queue)
 
@@ -104,6 +112,12 @@ int queue_dequeue(queue *p_queue, vehicle *p_item)
 
 int queue_get_size(const queue *p_queue)
 {
+    if (p_queue == NULL)
+    {
+        return 0;
+    }
+
+    return p_queue->size;
     /*
     FUNCTION queue_get_size(p_queue)
 
