@@ -101,6 +101,37 @@ int queue_enqueue(queue *p_queue, vehicle new_item)
 
 int queue_dequeue(queue *p_queue, vehicle *p_item)
 {
+     queue_node *p_temp = NULL;
+
+    if (p_queue == NULL)
+    {
+        return 0;
+    }
+
+    if (p_item == NULL)
+    {
+        return 0;
+    }
+
+    if (p_queue->p_first == NULL)
+    {
+        return 0;
+    }
+
+    p_temp = p_queue->p_first;
+    *p_item = p_temp->data;
+
+    p_queue->p_first = p_temp->p_next;
+
+    if (p_queue->p_first == NULL)
+    {
+        p_queue->p_last = NULL;
+    }
+
+    free(p_temp);
+    p_queue->size = p_queue->size - 1;
+
+    return 1;
     /*
     FUNCTION queue_dequeue(p_queue, p_item)
 
@@ -133,8 +164,6 @@ int queue_dequeue(queue *p_queue, vehicle *p_item)
 
     END FUNCTION
     */
-
-    return 0;
 }
 
 
@@ -157,8 +186,6 @@ int queue_get_size(const queue *p_queue)
 
     END FUNCTION
     */
-
-    return 0;
 }
 
 
@@ -190,8 +217,6 @@ int queue_is_empty(const queue *p_queue)
 
     END FUNCTION
     */
-
-    return 1;
 }
 
 
