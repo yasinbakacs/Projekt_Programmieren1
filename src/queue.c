@@ -34,8 +34,38 @@ void queue_init(queue *p_queue)
 }
 
 
-int queue_enqueue(queue *p_queue, vehicle item)
+int queue_enqueue(queue *p_queue, vehicle new_item)
 {
+    queue_node *p_new_node = NULL;
+
+    if (p_queue == NULL)
+    {
+        return 0;
+    }
+
+    p_new_node = malloc(sizeof(queue_node));
+    if (p_new_node == NULL)
+    {
+        return 0;
+    }
+
+    p_new_node->data = new_item;
+    p_new_node->p_next = NULL;
+
+    if (p_queue->p_first == NULL)
+    {
+        p_queue->p_first = p_new_node;
+        p_queue->p_last = p_new_node;
+    }
+    else
+    {
+        p_queue->p_last->p_next = p_new_node;
+        p_queue->p_last = p_new_node;
+    }
+
+    p_queue->size = p_queue->size + 1;
+
+    return 1;
     /*
     FUNCTION queue_enqueue(p_queue, item)
 
@@ -66,8 +96,6 @@ int queue_enqueue(queue *p_queue, vehicle item)
 
     END FUNCTION
     */
-
-    return 0;
 }
 
 
