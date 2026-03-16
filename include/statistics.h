@@ -16,11 +16,10 @@
 typedef struct {
     int step; //aktueller Zeitschritt
     int occupied_spots; //Anzahl der besetzten Parkplätze
-    int utilization_percent; //Auslastung in Prozent
     int queue_length; //Länge Warteschlange
     int departures_this_step; //Anzahl der Abfahrten in diesem Zeitschritt
     int parked_this_step; //Anzahl der Fahrzeuge, die in diesem Zeitschritt einparken
-    int utilization_percent; //Auslastung in Prozent
+    float utilization_percent; //Auslastung in Prozent
 } StepStats;
 
 //Gesamtstatistik über die gesamte Simulation
@@ -32,7 +31,7 @@ typedef struct {
     int total_parked; //Gesamtzahl geparkte Fahrzeuge
     long sum_occupied; //Durchschnitt belegter Plätze
     long sum_queue; //Durchschnitt Warteschlangenlänge
-}Stats;
+} Stats;
 
 
 
