@@ -96,7 +96,38 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step)
     // 4) Daten in Datei schreiben (mit Formatierung)
 }
 
-void stats_print(Stats *p_stats) {
+void stats_print(Stats *p_stats) 
+{
+    double avg_occupied = 0.0;
+    double avg_queue = 0.0;
+
+    if (p_stats == NULL)
+    {
+        return;
+    }
+
+    if (p_stats->total_steps > 0)
+    {
+        avg_occupied = (double)p_stats->sum_occupied / p_stats->total_steps;
+        avg_queue = (double)p_stats->sum_queue / p_stats->total_steps;
+    }
+
+    printf("\n=== Gesamtstatistik ===\n");
+    printf("Zeitschritte: %d\n", p_stats->total_steps);
+    printf("Gesamte Abfahrten: %d\n", p_stats->total_departures);
+    printf("Gesamt eingeparkt: %d\n", p_stats->total_parked);
+    printf("Durchschnitt belegte Plaetze: %.2f\n", avg_occupied);
+    printf("Durchschnitt Warteschlange: %.2f\n", avg_queue);
+
+    if (p_stats->p_file != NULL)
+    {
+        fprintf(p_stats->p_file, "\n=== Gesamtstatistik ===\n");
+        fprintf(p_stats->p_file, "Zeitschritte: %d\n", p_stats->total_steps);
+        fprintf(p_stats->p_file, "Gesamte Abfahrten: %d\n", p_stats->total_departures);
+        fprintf(p_stats->p_file, "Gesamt eingeparkt: %d\n", p_stats->total_parked);
+        fprintf(p_stats->p_file, "Durchschnitt belegte Plaetze: %.2f\n", avg_occupied);
+        fprintf(p_stats->p_file, "Durchschnitt Warteschlange: %.2f\n", avg_queue);
+    }
     // Pseudocode:
     // 1) IF p_stats == NULL THEN
     //        -> Fehlermeldung
