@@ -1,6 +1,6 @@
 /*
  * File: statistics.c
- * Description: Pseudocode für die Statistik-Funktionen
+ * Description: Statistikfunktionen für die Statistik-Funktionen
  */
 
 
@@ -11,7 +11,33 @@
 #include "statistics.h"
 
 
-bool stats_init(Stats *p_stats, const char *filename) {
+bool stats_init(Stats *p_stats, const char *filename) 
+{
+    if (p_stats == NULL)
+    {
+        return false;
+    }
+
+    if (filename == NULL)
+    {
+        return false;
+    }
+
+    p_stats->p_file = fopen(filename, "w");
+    if (p_stats->p_file == NULL)
+    {
+        return false;
+    }
+
+    p_stats->total_steps = 0;
+    p_stats->total_departures = 0;
+    p_stats->total_parked = 0;
+
+    p_stats->sum_occupied = 0;
+    p_stats->sum_queue = 0;
+
+    return true;
+
     // Pseudocode:
     // 1) IF p_stats == NULL OR filename == NULL THEN
     //        -> Fehlermeldung
@@ -28,7 +54,7 @@ bool stats_init(Stats *p_stats, const char *filename) {
     //        -> Fehlermeldung
     //    END IF
     // 4) Header für Datei schreiben (evtl. mit extra Funktion)
-    return false; // Platzhalter Rückgabewert
+    // Platzhalter Rückgabewert
 }
 
 
@@ -59,7 +85,18 @@ void stats_print(Stats *p_stats) {
     // 4) Endstatistik in Datei schreiben (mit Formatierung)
 }
 
-void stats_close(Stats *p_stats) {
+void stats_close(Stats *p_stats) 
+{
+    if (p_stats == NULL)
+    {
+        return;
+    }
+
+    if (p_stats->p_file != NULL)
+    {
+        fclose(p_stats->p_file);
+        p_stats->p_file = NULL;
+    }
     // Pseudocode:
     // 1) IF p_stats == NULL THEN
     //        -> Fehlermeldung
