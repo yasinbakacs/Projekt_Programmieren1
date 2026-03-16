@@ -32,24 +32,6 @@ bool stats_init(Stats *p_stats, const char *filename)
     }
 
     return true;
-
-    // Pseudocode:
-    // 1) IF p_stats == NULL OR filename == NULL THEN
-    //        -> Fehlermeldung
-    //    END IF
-    // 2) Werte auf 0 setzen:
-    //    p_stats->total_steps = 0;
-    //    p_stats->total_departures = 0;
-    //    p_stats->total_parked = 0;
-    //    p_stats->sum_occupied = 0;
-    //    p_stats->sum_queue = 0;
-    // 3) Datei öffnen:
-    //    p_stats->p_file = fopen(filename, "w");
-    //    IF p_stats->p_file == NULL THEN
-    //        -> Fehlermeldung
-    //    END IF
-    // 4) Header für Datei schreiben (evtl. mit extra Funktion)
-    // Platzhalter Rückgabewert
 }
 
 
@@ -82,18 +64,6 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step)
         fprintf(p_stats->p_file, "Eingeparkt: %d\n", p_step->parked_this_step);
         fprintf(p_stats->p_file, "-----------------------------\n");
     }
-    // Pseudocode:
-    // 1) IF p_stats == NULL OR p_step == NULL THEN
-    //        -> Fehlermeldung
-    //    END IF
-    // 2) Daten aus dem jeweiligen Step in allgemeine Stats übertragen:
-    //    p_stats->total_steps++;
-    //    p_stats->total_departures += p_step->departures_this_step;
-    //    p_stats->total_parked += p_step->parked_this_step;
-    //    p_stats->sum_occupied += p_step->occupied_spots;
-    //    p_stats->sum_queue += p_step->queue_length;
-    // 3) Ausgabe auf Konsole (mit Formatierung)
-    // 4) Daten in Datei schreiben (mit Formatierung)
 }
 
 void stats_print(Stats *p_stats) 
@@ -128,15 +98,6 @@ void stats_print(Stats *p_stats)
         fprintf(p_stats->p_file, "Durchschnitt belegte Plaetze: %.2f\n", avg_occupied);
         fprintf(p_stats->p_file, "Durchschnitt Warteschlange: %.2f\n", avg_queue);
     }
-    // Pseudocode:
-    // 1) IF p_stats == NULL THEN
-    //        -> Fehlermeldung
-    //    END IF
-    // 2) Durchschnitt berechnen:
-    //    avg_occupied <- p_stats->sum_occupied / p_stats->total_steps;
-    //    avg_queue <- p_stats->sum_queue / p_stats->total_steps;
-    // 3) Ausgabe der Endstatistik auf Konsole (mit Formatierung)
-    // 4) Endstatistik in Datei schreiben (mit Formatierung)
 }
 
 void stats_close(Stats *p_stats) 
@@ -151,13 +112,4 @@ void stats_close(Stats *p_stats)
         fclose(p_stats->p_file);
         p_stats->p_file = NULL;
     }
-    // Pseudocode:
-    // 1) IF p_stats == NULL THEN
-    //        -> Fehlermeldung
-    //    END IF
-    // 2) Datei schließen:
-    //    IF p_stats->p_file != NULL THEN
-    //        fclose(p_stats->p_file);
-    //        p_stats->p_file = NULL;
-    //    END IF
 }
