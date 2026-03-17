@@ -137,6 +137,20 @@ Zusätzlich wurden für jede Funktion mindestens zwei Unit-Tests erstellt.
 
 ---
 
+## Programmausführung
+
+Nach dem Start werden folgende Eingaben abgefragt:
+
+- Anzahl Stellplätze
+- Maximale Parkdauer
+- Anzahl Zeitschritte
+- Ankunftswahrscheinlichkeit
+- Zufalls-Seed
+
+Anschließend wird die Simulation durchgeführt und die Ergebnisse werden auf der Konsole sowie in einer Datei ausgegeben.
+
+---
+
 ## Statistiken
 
 Details zu den berechneten Kennzahlen befinden sich in:
@@ -152,6 +166,9 @@ Drei zentrale Funktionen wurden als Flussdiagramme modelliert:
 - simulation_step
 - parkingVehicle
 - processDepartures
+
+Diese befinden sich im Ordner:
+docs/flowcharts
 
 ---
 
