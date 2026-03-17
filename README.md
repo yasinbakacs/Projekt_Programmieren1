@@ -5,11 +5,12 @@
 ## Parkhaus-Simulation – Programmieren I (Teil 1)
 
 Dieses Projekt wurde im Rahmen des Moduls **Programmieren I** erstellt.  
-Ziel ist die Planung und Strukturierung einer Simulation eines Parkhauses.
+Ziel ist die Entwicklung einer Simulation eines Parkhauses.
 
-In **Teil 1** wird das Programm konzipiert.  
-Die Algorithmen werden in strukturiertem **Pseudocode** beschrieben.  
-Die vollständige Implementierung erfolgt in Teil 2.
+Das Projekt besteht aus zwei Teilen:
+
+- **Teil 1:** Programmentwurf mit Pseudocode und Strukturplanung  
+- **Teil 2:** Vollständige Implementierung in C
 
 ---
 
@@ -42,6 +43,19 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
    - statistics.c
    - main.c
 
+- /src_pseudo
+   - pseudo_vehicle.c
+   - pseudo_queue.c
+   - pseudo_parking.c
+   - pseudo_simulation.c
+   - pseudo_statistics.c
+   - pseudo_main.c
+
+- /tests
+   - test_vehicle.c
+   - test_queue.c
+   - test_parking.c
+   - test_statistics.c
 
 - /docs
    - statistics_uebersicht.md
@@ -114,13 +128,34 @@ Es sammelt Zustandsdaten pro Zeitschritt, berechnet aggregierte Kennzahlen
 
 ---
 
-## Geplante Statistiken
+## Implementierung (Teil 2)
 
-- Anzahl belegter Stellplätze (pro Zeitschritt und gesamt Durchschnitt)
-- Länge der Warteschlange (pro Zeitschritt und gesamt Durchschnitt)
-- Anzahl Ankünfte (pro Zeitschritt und gesamt)
-- Anzahl Abfahrten (pro Zeitschritt und gesamt)
-- Auslastung in Prozent (pro Zeitschritt und gesamt Durchschnitt)
+In Teil 2 wurde der Programmentwurf vollständig in C umgesetzt.  
+Alle Module wurden implementiert und miteinander integriert.
+
+Zusätzlich wurden für jede Funktion mindestens zwei Unit-Tests erstellt.
+
+---
+
+## Programmausführung
+
+Nach dem Start werden folgende Eingaben abgefragt:
+
+- Anzahl Stellplätze
+- Maximale Parkdauer
+- Anzahl Zeitschritte
+- Ankunftswahrscheinlichkeit
+- Zufalls-Seed
+
+Anschließend wird die Simulation durchgeführt und die Ergebnisse werden auf der Konsole sowie in einer Datei ausgegeben.
+
+---
+
+## Statistiken
+
+Details zu den berechneten Kennzahlen befinden sich in:
+
+docs/statistics_uebersicht.md
 
 ---
 
@@ -131,6 +166,9 @@ Drei zentrale Funktionen wurden als Flussdiagramme modelliert:
 - simulation_step
 - parkingVehicle
 - processDepartures
+
+Diese befinden sich im Ordner:
+docs/flowcharts
 
 ---
 
