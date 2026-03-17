@@ -128,13 +128,20 @@ Es sammelt Zustandsdaten pro Zeitschritt, berechnet aggregierte Kennzahlen
 
 ---
 
-## Geplante Statistiken
+## Implementierung (Teil 2)
 
-- Anzahl belegter Stellplätze (pro Zeitschritt und gesamt Durchschnitt)
-- Länge der Warteschlange (pro Zeitschritt und gesamt Durchschnitt)
-- Anzahl Ankünfte (pro Zeitschritt und gesamt)
-- Anzahl Abfahrten (pro Zeitschritt und gesamt)
-- Auslastung in Prozent (pro Zeitschritt und gesamt Durchschnitt)
+In Teil 2 wurde der Programmentwurf vollständig in C umgesetzt.  
+Alle Module wurden implementiert und miteinander integriert.
+
+Zusätzlich wurden für jede Funktion mindestens zwei Unit-Tests erstellt.
+
+---
+
+## Statistiken
+
+Details zu den berechneten Kennzahlen befinden sich in:
+
+docs/statistics_uebersicht.md
 
 ---
 
