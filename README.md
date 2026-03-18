@@ -55,6 +55,7 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
    - test_vehicle.c
    - test_queue.c
    - test_parking.c
+   - test_simulation.c
    - test_statistics.c
 
 - /docs
