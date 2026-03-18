@@ -54,7 +54,7 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step)
     printf("Neu Eingeparkt: %d\n", p_step->parked_this_step);
     printf("Besetzte Plaetze: %d\n", p_step->occupied_spots);
     printf("Laenge Warteschlange: %d\n", p_step->queue_length);
-    printf("Auslastung in Prozent: %f\n", p_step->utilization_percent);
+    printf("Auslastung in Prozent: %.2f\n", p_step->utilization_percent);
 
 
     
@@ -67,7 +67,7 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step)
         fprintf(p_stats->p_file, "Neu Eingeparkt: %d\n", p_step->parked_this_step);
         fprintf(p_stats->p_file, "Besetzte Plaetze: %d\n", p_step->occupied_spots);
         fprintf(p_stats->p_file, "Laenge Warteschlange: %d\n", p_step->queue_length);
-        fprintf(p_stats->p_file, "Auslastung in Prozent: %f\n", p_step->utilization_percent);
+        fprintf(p_stats->p_file, "Auslastung in Prozent: %.2f\n", p_step->utilization_percent);
         
     }
 }
