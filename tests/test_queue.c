@@ -1,3 +1,8 @@
+/*
+ * File: test_queue.c
+ * Beschreibung: Testet die Funktionen von Queue
+ */
+
 #include <assert.h>
 #include <stdio.h>
 #include "queue.h"
@@ -13,7 +18,7 @@ vehicle create_test_vehicle(int id, int entry_time, int time_remaining)
     return v;
 }
 
-void test_queue_init(void)
+void test_queue_init()
 {
     queue q;
 
@@ -26,7 +31,7 @@ void test_queue_init(void)
     assert(queue_get_size(&q) == 0);
 }
 
-void test_queue_enqueue_add(void)
+void test_queue_enqueue_add()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -46,7 +51,7 @@ void test_queue_enqueue_add(void)
     queue_free(&q);
 }
 
-void test_queue_enqueue_add_multiple(void)
+void test_queue_enqueue_add_multiple()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -67,7 +72,7 @@ void test_queue_enqueue_add_multiple(void)
     queue_free(&q);
 }
 
-void test_queue_dequeue_remove(void)
+void test_queue_dequeue_remove()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -90,7 +95,7 @@ void test_queue_dequeue_remove(void)
     queue_free(&q);
 }
 
-void test_queue_dequeue_empty(void)
+void test_queue_dequeue_empty()
 {
     queue q;
     vehicle out_vehicle;
@@ -104,7 +109,7 @@ void test_queue_dequeue_empty(void)
     queue_free(&q);
 }
 
-void test_queue_get_size(void)
+void test_queue_get_size()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -123,7 +128,7 @@ void test_queue_get_size(void)
     queue_free(&q);
 }
 
-void test_queue_is_empty(void)
+void test_queue_is_empty()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -142,7 +147,7 @@ void test_queue_is_empty(void)
     queue_free(&q);
 }
 
-void test_queue_free(void)
+void test_queue_free()
 {
     queue q;
     vehicle v1 = create_test_vehicle(1, 0, 5);
@@ -159,4 +164,18 @@ void test_queue_free(void)
     assert(q.p_last == NULL);
     assert(q.size == 0);
     assert(queue_is_empty(&q) == 1);
+}
+
+// Sammelfunktion
+
+void run_queue_tests()
+{
+    test_queue_init();
+    test_queue_enqueue_add();
+    test_queue_enqueue_add_multiple();
+    test_queue_dequeue_remove();
+    test_queue_dequeue_empty();
+    test_queue_get_size();
+    test_queue_is_empty();
+    test_queue_free();
 }
