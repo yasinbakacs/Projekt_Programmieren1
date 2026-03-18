@@ -3,7 +3,7 @@
  * Description: C-Datei für die Simulation eines Parkhauses.
  */
 
-/* Einbinden der Standardbibliotheken und Simulation.h */
+/* Einbinden der Standardbibliotheken und nötigen Header */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -22,7 +22,22 @@ static Stats g_stats;
  */
 void simulation_init(SimulationConfig config)
 {
+    bool ok = false;
+
     srand(config.random_seed); //Zufalls-Seed setzen
+
+    ok = initGarage(&g_garage, config.random_seed);
+    if (ok == false) {
+        printf("Parkhaus konnte nicht initialisiert werden.");
+        return false;
+    }
+
+    queue_init(&g_queue);
+
+    ok = stats_init(&g_queue);
+    if (ok == false){
+        printf("")
+    }
 
     //Parkhaus initialisieren
     // PSEUDOCODE:
