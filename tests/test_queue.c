@@ -69,12 +69,39 @@ void test_queue_enqueue_add_multiple(void)
 
 void test_queue_dequeue_remove(void)
 {
+    queue q;
+    vehicle v1 = create_test_vehicle(1, 0, 5);
+    vehicle v2 = create_test_vehicle(2, 1, 4);
+    vehicle out_vehicle;
 
+    queue_init(&q);
+
+    assert(queue_enqueue(&q, v1) == 1);
+    assert(queue_enqueue(&q, v2) == 1);
+    assert(queue_dequeue(&q, &out_vehicle) == 1);
+
+    assert(out_vehicle.id == 1);
+    assert(q.size == 1);
+    assert(q.p_first != NULL);
+    assert(q.p_first->data.id == 2);
+    assert(q.p_last != NULL);
+    assert(q.p_last->data.id == 2);
+
+    queue_free(&q);
 }
 
 void test_queue_dequeue_empty(void)
 {
+    queue q;
+    vehicle out_vehicle;
 
+    queue_init(&q);
+
+    assert(queue_dequeue(&q, &out_vehicle) == 0);
+    assert(queue_is_empty(&q) == 1);
+    assert(queue_get_size(&q) == 0);
+
+    queue_free(&q);
 }
 
 void test_queue_get_size(void)
