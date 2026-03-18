@@ -1,3 +1,8 @@
+/*
+ * File: test_vehicle.c
+ * Beschreibung: Testet die Funktionen von Vehicle
+ */
+
 #include <assert.h>
 #include <stdio.h>
 #include "vehicle.h"
@@ -26,4 +31,11 @@ void test_vehicle_create_id()
     assert(v1.id == 1);
     assert(v2.id == 2);
     assert(next_id == 3);
+}
+
+// Sammelfunktion
+void run_vehicle_tests()
+{
+    test_vehicle_create_basic();
+    test_vehicle_create_id();
 }
