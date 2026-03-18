@@ -93,7 +93,7 @@ void simulation_step(SimulationConfig config, int step)
             if (ok == 1){
                 parked_this_step += 1;
             }
-        }else{
+        }else {
             ok = queue_enqueue(&g_queue, new_vehicle);
             if (ok ==0){
                 printf("Auto konnte nicht in die Queue eingeführt werden.");
@@ -113,49 +113,16 @@ void simulation_step(SimulationConfig config, int step)
         }
     }
 
+    step_stats.step = step;
+    step_stats.occupied_spots = g_garage.occupiedCount;
+    step_stats.queue_length = queue_get_size(&g_queue);
+    step_stats.departures_this_step = departures_this_step;
+    step_stats.parked_this_step = parked_this_step;
+    if (step > 0){
+        step_stats.utilization_percent = (g_garage.occupiedCount * 100) / g_garage.capacity;
+    }else {
+        step_stats.utilization_percent = 0;
+    }
 
-    // PSEUDOCODE:
-    // parked_this_step <- 0
-    //
-    // Prüfen ob neues Fahrzeug ankommt:
-    // r <- RANDOM_NUMBER(0..99)
-    // IF r < config.arrival_probability THEN
-    //     v <- vehicle_create(&g_next_id, config.max_parking_time, step)
-    //     v.id <- g_next_id
-    //     g_next_id <- g_next_id + 1
-    //     v.time_remaining <- RANDOM_NUMBER(1..config.max_parking_time)
-    //     v.entry_time <- step
-    //
-    //     Einparken oder warten?
-    //     free_index <- findFreeSpot(&g_garage)
-    //     IF free_index != -1 THEN
-    //         ok <- parkVehicle(&g_garage, v)
-    //         IF ok == true THEN
-    //             parked_this_step <- parked_this_step + 1
-    //         END IF
-    //     ELSE
-    //         queue_enqueue(&g_queue, v)
-    //     END IF
-    // END IF
-    //
-    // Abfahrten verarbeiten:
-    // departures_this_step <- 0
-    // processDepartures(&g_garage, &departures_this_step)
-    //
-    // Warteschlange nachrücken lassen:
-    // WHILE findFreeSpot(&g_garage) != -1 AND queue_is_empty(&g_queue) == false DO
-    //     next <- queue_dequeue(&g_queue)
-    //     ok <- parkVehicle(&g_garage, next)
-    // END WHILE
-    //
-    //Statistiken aktualisieren + ausgeben:
-    StepStats step_stats;
-    // PSEUDOCODE:
-    // step_stats.step <- step
-    // step_stats.occupied_spots <- g_garage.occupiedCount
-    // step_stats.utilization_percent <- (g_garage.occupiedCount * 100) / g_garage.totalSpots
-    // step_stats.queue_length <- queue_get_size(&g_queue)
-    // step_stats.departures_this_step <- departures_this_step
-    // step_stats.parked_this_step <- parked_this_step
-    // stats_rec_step(&g_stats)
+    stats_rec_step(&g_stats, &step_stats);
 }
