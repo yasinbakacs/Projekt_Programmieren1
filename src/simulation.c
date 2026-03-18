@@ -34,36 +34,12 @@ void simulation_init(SimulationConfig config)
 
     queue_init(&g_queue);
 
-    ok = stats_init(&g_queue);
+    ok = stats_init(&g_stats, "docs/simulation_steps.txt");
     if (ok == false){
-        printf("")
+        printf("Statistik konnte nicht initialisiert werden.");
     }
 
-    //Parkhaus initialisieren
-    // PSEUDOCODE:
-    // ok <- initGarage(&g_garage, config.total_spots)
-    // IF ok == false THEN
-    //     OUTPUT "Fehler: Parkhaus konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
-    //
-
-    // Warteschlange initialisieren
-    // PSEUDOCODE:
-    // ok <- queue_init(&g_queue)
-    //IF ok == false THEN
-    //     OUTPUT "Fehler: Warteschlange konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
-
-    // Statistikstruktur initialisieren
-    // PSEUDOCODE:
-    // ok <- stats_init(&g_stats, "simulation_stats.txt")
-    // IF ok == false THEN
-    //     OUTPUT "Fehler: Statistik konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
-    // g_stats.total_steps <- config.simulation_steps
+    g_next_id = 1;
 }
 
 /**
@@ -71,16 +47,24 @@ void simulation_init(SimulationConfig config)
  */
 void simulation_run(SimulationConfig config)
 {
-    simulation_init(config); // Simulation initialisieren
+    
+    bool ok = false;
 
-    // Für jeden Zeitschritt
-    // FOR step <- 0 TO config.simulation_steps - 1 DO
-    //     simulation_step(config, step)
-    // END FOR
+    ok = simulation_init(config); // Simulation initialisieren und prüfen
+    if (ok == false){
+        printf("Simulation konnte nicht initialisiert werden.");
+        return;
+    }
 
-    // Gesamtauswertung ausgeben:
-    // stats_print(&g_stats)
-    // stats_close(&g_stats)
+    for (int step = 0; step < config.simulation_steps; step++){
+        simulation_step(config, step);
+    }
+
+    stats_print(&g_stats);
+    stats_close(&g_stats);
+
+    queue_free(&g_queue);
+    freeGarage(&g_garage);
 }
 
 /**
@@ -88,6 +72,38 @@ void simulation_run(SimulationConfig config)
  */
 void simulation_step(SimulationConfig config, int step)
 {
+    int parked_this_step = 0;
+    int departures_this_step = 0;
+    int random_value = 0;
+    int free_index = -1;
+    int ok = 0;
+
+    vehicle new_vehicle;
+    vehicle queued_vehicle;
+    StepStats step_stats;
+
+    random_value = rand() % 100;
+    
+    if (random_value < config.arrival_probability){
+        new_vehicle = vehicle_create(&g_next_id, config.max_parking_time, step);
+
+        free_index = findFreeSpot(&g_garage);
+        if (free_index != -1){
+            ok = parkVehicle(&g_garage, new_vehicle);
+            if (ok == 1){
+                parked_this_step += 1;
+            }
+        }else{
+            ok = queue_dequeue(&g_queue, new_vehicle);
+            if (ok ==0){
+                printf("Auto konnte nicht in die Queue eingeführt werden.");
+            }
+        }
+    }
+
+    processDepartures(&g_garage, &departures_this_step);
+
+        
     // PSEUDOCODE:
     // parked_this_step <- 0
     //
