@@ -105,3 +105,59 @@ static void test_stats_rec_step_multiple_steps(void)
     remove("test_stats_rec_step_multiple_steps.txt");
 }
 
+static void test_stats_print_keeps_values_consistent(void)
+{
+    Stats stats;
+    StepStats step;
+    bool ok = false;
+
+    ok = stats_init(&stats, "test_stats_print_keeps_values_consistent.txt");
+    assert(ok == true);
+
+    step.step = 0;
+    step.occupied_spots = 6;
+    step.queue_length = 2;
+    step.departures_this_step = 1;
+    step.parked_this_step = 3;
+    step.utilization_percent = 75;
+
+    stats_rec_step(&stats, &step);
+    stats_print(&stats);
+
+    assert(stats.total_steps == 1);
+    assert(stats.total_departures == 1);
+    assert(stats.total_parked == 3);
+    assert(stats.sum_occupied == 6);
+    assert(stats.sum_queue == 2);
+
+    stats_close(&stats);
+    remove("test_stats_print_keeps_values_consistent.txt");
+}
+
+static void test_stats_close_sets_file_to_null(void)
+{
+    Stats stats;
+    bool ok = false;
+
+    ok = stats_init(&stats, "test_stats_close_sets_file_to_null.txt");
+    assert(ok == true);
+    assert(stats.p_file != NULL);
+
+    stats_close(&stats);
+
+    assert(stats.p_file == NULL);
+
+    remove("test_stats_close_sets_file_to_null.txt");
+}
+
+void run_statistics_tests(void)
+{
+    test_stats_init_valid();
+    test_stats_init_invalid();
+    test_stats_rec_step_updates_values();
+    test_stats_rec_step_multiple_steps();
+    test_stats_print_keeps_values_consistent();
+    test_stats_close_sets_file_to_null();
+
+    printf("Alle Statistics-Tests bestanden!\n");
+}
