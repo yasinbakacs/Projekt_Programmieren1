@@ -106,17 +106,59 @@ void test_queue_dequeue_empty(void)
 
 void test_queue_get_size(void)
 {
+    queue q;
+    vehicle v1 = create_test_vehicle(1, 0, 5);
+    vehicle v2 = create_test_vehicle(2, 1, 4);
 
+    queue_init(&q);
+
+    assert(queue_get_size(&q) == 0);
+
+    assert(queue_enqueue(&q, v1) == 1);
+    assert(queue_get_size(&q) == 1);
+
+    assert(queue_enqueue(&q, v2) == 1);
+    assert(queue_get_size(&q) == 2);
+
+    queue_free(&q);
 }
 
 void test_queue_is_empty(void)
 {
+    queue q;
+    vehicle v1 = create_test_vehicle(1, 0, 5);
+    vehicle out_vehicle;
 
+    queue_init(&q);
+
+    assert(queue_is_empty(&q) == 1);
+
+    assert(queue_enqueue(&q, v1) == 1);
+    assert(queue_is_empty(&q) == 0);
+
+    assert(queue_dequeue(&q, &out_vehicle) == 1);
+    assert(queue_is_empty(&q) == 1);
+
+    queue_free(&q);
 }
 
 void test_queue_free(void)
 {
+    queue q;
+    vehicle v1 = create_test_vehicle(1, 0, 5);
+    vehicle v2 = create_test_vehicle(2, 1, 4);
 
+    queue_init(&q);
+
+    assert(queue_enqueue(&q, v1) == 1);
+    assert(queue_enqueue(&q, v2) == 1);
+
+    queue_free(&q);
+
+    assert(q.p_first == NULL);
+    assert(q.p_last == NULL);
+    assert(q.size == 0);
+    assert(queue_is_empty(&q) == 1);
 }
 
 
