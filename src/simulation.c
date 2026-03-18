@@ -26,7 +26,7 @@ bool simulation_init(SimulationConfig config)
 
     srand(config.random_seed); //Zufalls-Seed setzen
 
-    ok = initGarage(&g_garage, config.random_seed);
+    ok = initGarage(&g_garage, config.total_spots);
     if (ok == false) {
         printf("Parkhaus konnte nicht initialisiert werden.");
         return false;
