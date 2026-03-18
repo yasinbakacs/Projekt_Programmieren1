@@ -25,49 +25,59 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
 - Statistische Auswertung über die gesamte Laufzeit
 
 ---
-
 ## Projektstruktur
 
-- /include
-   - vehicle.h
-   - queue.h
-   - parking.h
-   - simulation.h
-   - statistics.h
+- /.vscode  
+- /build  
+- /build-linux  
 
-- /src
-   - vehicle.c
-   - queue.c
-   - parking.c
-   - simulation.c
-   - statistics.c
-   - main.c
+- /docs  
+   - /Dokumente  
+      - /Teil_1  
+         - /flowcharts  
+            - parkingVehicle_flowchart.drawio.png  
+            - processDepartures_flowchart.drawio.png  
+            - simulation_step_flowchart.drawio.png  
+         - Ausgabe_gesamt_Konsole.txt  
+         - Ausgabe_step_Konsole.txt  
+         - statistics_uebersicht.md  
+      - /Teil_2  
+         - Dokumentation.md  
+   - simulation_steps.txt  
 
-- /src_pseudo
-   - pseudo_vehicle.c
-   - pseudo_queue.c
-   - pseudo_parking.c
-   - pseudo_simulation.c
-   - pseudo_statistics.c
-   - pseudo_main.c
+- /include  
+   - vehicle.h  
+   - queue.h  
+   - parking.h  
+   - simulation.h  
+   - statistics.h  
 
-- /tests
-   - test_vehicle.c
-   - test_queue.c
-   - test_parking.c
-   - test_simulation.c
-   - test_statistics.c
-   - test_main.c
+- /src  
+   - vehicle.c  
+   - queue.c  
+   - parking.c  
+   - simulation.c  
+   - statistics.c  
+   - main.c  
 
-- /docs
-   - statistics_uebersicht.md
-   - Ausgabe_step_Konsole.txt
-   - Ausgabe_gesamt_Konsole.txt
-   - Dokumentation.pdf
-   - flowcharts/
-      - simulation_step_flowchart.drawio.png
-      - parkingVehicle_flowchart.drawio.png
-      - processDepartures_flowchart.drawio.png
+- /src_pseudo  
+   - pseudo_vehicle.c  
+   - pseudo_queue.c  
+   - pseudo_parking.c  
+   - pseudo_simulation.c  
+   - pseudo_statistics.c  
+   - pseudo_main.c  
+
+- /tests  
+   - test_vehicle.c  
+   - test_queue.c  
+   - test_parking.c  
+   - test_simulation.c  
+   - test_statistics.c  
+   - test_main.c  
+
+- CMakeLists.txt  
+- README.md  
 
 ---
 
@@ -199,3 +209,4 @@ docs/flowcharts
 - Programmiersprache: C  
 - Entwicklung in Visual Studio Code  
 - Arbeitsverwaltung mit GitHub
+- Kompilierung  mit CMake
