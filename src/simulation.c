@@ -28,7 +28,7 @@ bool simulation_init(SimulationConfig config)
 
     ok = initGarage(&g_garage, config.total_spots);
     if (ok == false) {
-        printf("Parkhaus konnte nicht initialisiert werden.");
+        printf("Parkhaus konnte nicht initialisiert werden.\n");
         return false;
     }
 
@@ -36,7 +36,7 @@ bool simulation_init(SimulationConfig config)
 
     ok = stats_init(&g_stats, "docs/simulation_steps.txt");
     if (ok == false){
-        printf("Statistik konnte nicht initialisiert werden.");
+        printf("Statistik konnte nicht initialisiert werden.\n");
     }
 
     g_next_id = 1;
@@ -54,7 +54,7 @@ void simulation_run(SimulationConfig config)
 
     ok = simulation_init(config); // Simulation initialisieren und prüfen
     if (ok == false){
-        printf("Simulation konnte nicht initialisiert werden.");
+        printf("Simulation konnte nicht initialisiert werden.\n");
         return;
     }
 
@@ -98,7 +98,7 @@ void simulation_step(SimulationConfig config, int step)
         }else {
             ok = queue_enqueue(&g_queue, new_vehicle);
             if (ok ==0){
-                printf("Auto konnte nicht in die Queue eingeführt werden.");
+                printf("Auto konnte nicht in die Queue eingeführt werden.\n");
             }
         }
     }
