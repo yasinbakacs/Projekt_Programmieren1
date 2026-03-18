@@ -120,8 +120,8 @@ void simulation_step(SimulationConfig config, int step)
     step_stats.queue_length = queue_get_size(&g_queue);
     step_stats.departures_this_step = departures_this_step;
     step_stats.parked_this_step = parked_this_step;
-    if (step > 0){
-        step_stats.utilization_percent = (g_garage.occupiedCount * 100) / g_garage.capacity;
+    if (config.total_spots > 0){
+        step_stats.utilization_percent = ((double) g_garage.occupiedCount / config.total_spots) * 100.0;
     }else {
         step_stats.utilization_percent = 0;
     }

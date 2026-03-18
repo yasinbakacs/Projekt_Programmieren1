@@ -48,21 +48,27 @@ void stats_rec_step(Stats *p_stats, const StepStats *p_step)
     p_stats->sum_occupied = p_stats->sum_occupied + p_step->occupied_spots;
     p_stats->sum_queue = p_stats->sum_queue + p_step->queue_length;
 
-    printf("Step: %d\n", p_step->step);
-    printf("Belegte Plaetze: %d\n", p_step->occupied_spots);
-    printf("Warteschlange: %d\n", p_step->queue_length);
-    printf("Abfahrten: %d\n", p_step->departures_this_step);
-    printf("Eingeparkt: %d\n", p_step->parked_this_step);
     printf("-----------------------------\n");
+    printf("Statistiken fuer Step %d: \n", p_step->step);    
+    printf("\nAbfahrten: %d\n", p_step->departures_this_step);    
+    printf("Neu Eingeparkt: %d\n", p_step->parked_this_step);
+    printf("Besetzte Plaetze: %d\n", p_step->occupied_spots);
+    printf("Laenge Warteschlange: %d\n", p_step->queue_length);
+    printf("Auslastung in Prozent: %f\n", p_step->utilization_percent);
+
+
+    
 
     if (p_stats->p_file != NULL)
     {
-        fprintf(p_stats->p_file, "Step: %d\n", p_step->step);
-        fprintf(p_stats->p_file, "Belegte Plaetze: %d\n", p_step->occupied_spots);
-        fprintf(p_stats->p_file, "Warteschlange: %d\n", p_step->queue_length);
-        fprintf(p_stats->p_file, "Abfahrten: %d\n", p_step->departures_this_step);
-        fprintf(p_stats->p_file, "Eingeparkt: %d\n", p_step->parked_this_step);
         fprintf(p_stats->p_file, "-----------------------------\n");
+        fprintf(p_stats->p_file, "Statistiken fuer Step %d: \n", p_step->step);
+        fprintf(p_stats->p_file, "\nAbfahrten: %d\n", p_step->departures_this_step);
+        fprintf(p_stats->p_file, "Neu Eingeparkt: %d\n", p_step->parked_this_step);
+        fprintf(p_stats->p_file, "Besetzte Plaetze: %d\n", p_step->occupied_spots);
+        fprintf(p_stats->p_file, "Laenge Warteschlange: %d\n", p_step->queue_length);
+        fprintf(p_stats->p_file, "Auslastung in Prozent: %f\n", p_step->utilization_percent);
+        
     }
 }
 
@@ -82,21 +88,25 @@ void stats_print(Stats *p_stats)
         avg_queue = (double)p_stats->sum_queue / p_stats->total_steps;
     }
 
-    printf("\n=== Gesamtstatistik ===\n");
-    printf("Zeitschritte: %d\n", p_stats->total_steps);
-    printf("Gesamte Abfahrten: %d\n", p_stats->total_departures);
-    printf("Gesamt eingeparkt: %d\n", p_stats->total_parked);
-    printf("Durchschnitt belegte Plaetze: %.2f\n", avg_occupied);
-    printf("Durchschnitt Warteschlange: %.2f\n", avg_queue);
+    printf("\n-----------------------------\n");
+    printf("Die Simulation ist abgeschlossen.\nInsgesamt sind:\n");
+    printf("%d Zeitschritte simuliert worden. \n", p_stats->total_steps);
+    printf("%d Autos ausgefahren. \n", p_stats->total_departures);
+    printf("%d Autos eingefahren. \n", p_stats->total_parked);
+    printf("\nIm Durchschnitt waren:\n");
+    printf("%.2f Parkplaetze besetzt. \n", avg_occupied);
+    printf("%.2f Autos in der Warteschlange. \n", avg_queue);
 
     if (p_stats->p_file != NULL)
     {
-        fprintf(p_stats->p_file, "\n=== Gesamtstatistik ===\n");
-        fprintf(p_stats->p_file, "Zeitschritte: %d\n", p_stats->total_steps);
-        fprintf(p_stats->p_file, "Gesamte Abfahrten: %d\n", p_stats->total_departures);
+        fprintf(p_stats->p_file, "\n-----------------------------\n");
+        fprintf(p_stats->p_file, "Die Simulation ist abgeschlossen.\nInsgesamt sind:\n");
+        fprintf(p_stats->p_file, "%d Zeitschritte simuliert worden. \n", p_stats->total_steps);
+        fprintf(p_stats->p_file, "%d Autos ausgefahren. \n", p_stats->total_departures);
+        fprintf(p_stats->p_file, "\nIm Durchschnitt waren:\n");
         fprintf(p_stats->p_file, "Gesamt eingeparkt: %d\n", p_stats->total_parked);
-        fprintf(p_stats->p_file, "Durchschnitt belegte Plaetze: %.2f\n", avg_occupied);
-        fprintf(p_stats->p_file, "Durchschnitt Warteschlange: %.2f\n", avg_queue);
+        fprintf(p_stats->p_file, "%.2f Parkplaetze besetzt. \n", avg_occupied);
+        fprintf(p_stats->p_file, "%.2f Autos in der Warteschlange. \n", avg_queue);
     }
 }
 
