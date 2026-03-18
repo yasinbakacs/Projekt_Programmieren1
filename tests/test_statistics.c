@@ -68,3 +68,40 @@ static void test_stats_rec_step_updates_values(void)
     remove("test_stats_rec_step_updates_values.txt");
 }
 
+static void test_stats_rec_step_multiple_steps(void)
+{
+    Stats stats;
+    StepStats step1;
+    StepStats step2;
+    bool ok = false;
+
+    ok = stats_init(&stats, "test_stats_rec_step_multiple_steps.txt");
+    assert(ok == true);
+
+    step1.step = 0;
+    step1.occupied_spots = 2;
+    step1.queue_length = 1;
+    step1.departures_this_step = 0;
+    step1.parked_this_step = 2;
+    step1.utilization_percent = 40;
+
+    step2.step = 1;
+    step2.occupied_spots = 4;
+    step2.queue_length = 3;
+    step2.departures_this_step = 1;
+    step2.parked_this_step = 1;
+    step2.utilization_percent = 80;
+
+    stats_rec_step(&stats, &step1);
+    stats_rec_step(&stats, &step2);
+
+    assert(stats.total_steps == 2);
+    assert(stats.total_departures == 1);
+    assert(stats.total_parked == 3);
+    assert(stats.sum_occupied == 6);
+    assert(stats.sum_queue == 4);
+
+    stats_close(&stats);
+    remove("test_stats_rec_step_multiple_steps.txt");
+}
+
