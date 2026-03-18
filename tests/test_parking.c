@@ -79,3 +79,146 @@ static void test_findFreeSpot_empty(void)
 
     freeGarage(&garage);
 }
+
+static void test_findFreeSpot_full(void)
+{
+    ParkingGarage garage;
+    vehicle v1;
+    vehicle v2;
+    int index;
+
+    assert(initGarage(&garage, 2) == true);
+
+    v1 = createTestVehicle(1, 0, 3);
+    v2 = createTestVehicle(2, 0, 4);
+
+    assert(parkVehicle(&garage, v1) == true);
+    assert(parkVehicle(&garage, v2) == true);
+
+    index = findFreeSpot(&garage);
+
+    assert(index == -1);
+
+    freeGarage(&garage);
+}
+
+static void test_parkVehicle_success(void)
+{
+    ParkingGarage garage;
+    vehicle v;
+    bool result;
+
+    assert(initGarage(&garage, 2) == true);
+
+    v = createTestVehicle(10, 5, 7);
+    result = parkVehicle(&garage, v);
+
+    assert(result == true);
+    assert(garage.occupiedCount == 1);
+    assert(garage.spots[0].occupied == true);
+    assert(garage.spots[0].vehicle != NULL);
+    assert(garage.spots[0].vehicle->id == 10);
+    assert(garage.spots[0].vehicle->entry_time == 5);
+    assert(garage.spots[0].vehicle->time_remaining == 7);
+
+    freeGarage(&garage);
+}
+
+static void test_parkVehicle_full(void)
+{
+    ParkingGarage garage;
+    vehicle v1;
+    vehicle v2;
+    bool result;
+
+    assert(initGarage(&garage, 1) == true);
+
+    v1 = createTestVehicle(1, 0, 2);
+    v2 = createTestVehicle(2, 1, 3);
+
+    assert(parkVehicle(&garage, v1) == true);
+
+    result = parkVehicle(&garage, v2);
+
+    assert(result == false);
+    assert(garage.occupiedCount == 1);
+
+    freeGarage(&garage);
+}
+
+static void test_processDepartures_noDeparture(void)
+{
+    ParkingGarage garage;
+    vehicle v;
+    int departuresThisStep;
+
+    assert(initGarage(&garage, 2) == true);
+
+    v = createTestVehicle(1, 0, 3);
+    assert(parkVehicle(&garage, v) == true);
+
+    departuresThisStep = -1;
+    processDepartures(&garage, &departuresThisStep);
+
+    assert(departuresThisStep == 0);
+    assert(garage.occupiedCount == 1);
+    assert(garage.spots[0].occupied == true);
+    assert(garage.spots[0].vehicle != NULL);
+    assert(garage.spots[0].vehicle->time_remaining == 2);
+
+    freeGarage(&garage);
+}
+
+static void test_processDepartures_withDeparture(void)
+{
+    ParkingGarage garage;
+    vehicle v;
+    int departuresThisStep;
+
+    assert(initGarage(&garage, 2) == true);
+
+    v = createTestVehicle(1, 0, 1);
+    assert(parkVehicle(&garage, v) == true);
+
+    departuresThisStep = -1;
+    processDepartures(&garage, &departuresThisStep);
+
+    assert(departuresThisStep == 1);
+    assert(garage.occupiedCount == 0);
+    assert(garage.spots[0].occupied == false);
+    assert(garage.spots[0].vehicle == NULL);
+
+    freeGarage(&garage);
+}
+
+int main(void)
+{
+    test_initGarage_valid();
+    test_initGarage_invalid();
+
+    test_findFreeSpot_empty();
+    test_findFreeSpot_full();
+
+    test_parkVehicle_success();
+    test_parkVehicle_full();
+
+    test_processDepartures_noDeparture();
+    test_processDepartures_withDeparture();
+
+    printf("Alle Tests fuer parking.c erfolgreich bestanden.\n");
+    return 0;
+}
+void run_parking_tests(void)
+{
+    test_initGarage_valid();
+    test_initGarage_invalid();
+
+    test_findFreeSpot_empty();
+    test_findFreeSpot_full();
+
+    test_parkVehicle_success();
+    test_parkVehicle_full();
+
+    test_processDepartures_noDeparture();
+    test_processDepartures_withDeparture();
+}
