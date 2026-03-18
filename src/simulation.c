@@ -3,7 +3,7 @@
  * Description: C-Datei für die Simulation eines Parkhauses.
  */
 
-/* Einbinden der Standardbibliotheken und Simulation.h */
+/* Einbinden der Standardbibliotheken und nötigen Header */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -20,35 +20,28 @@ static Stats g_stats;
 /**
  * @brief Initialisiert die Simulation.
  */
-void simulation_init(SimulationConfig config)
+bool simulation_init(SimulationConfig config)
 {
+    bool ok = false;
+
     srand(config.random_seed); //Zufalls-Seed setzen
 
-    //Parkhaus initialisieren
-    // PSEUDOCODE:
-    // ok <- initGarage(&g_garage, config.total_spots)
-    // IF ok == false THEN
-    //     OUTPUT "Fehler: Parkhaus konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
-    //
+    ok = initGarage(&g_garage, config.random_seed);
+    if (ok == false) {
+        printf("Parkhaus konnte nicht initialisiert werden.");
+        return false;
+    }
 
-    // Warteschlange initialisieren
-    // PSEUDOCODE:
-    // ok <- queue_init(&g_queue)
-    //IF ok == false THEN
-    //     OUTPUT "Fehler: Warteschlange konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
+    queue_init(&g_queue);
 
-    // Statistikstruktur initialisieren
-    // PSEUDOCODE:
-    // ok <- stats_init(&g_stats, "simulation_stats.txt")
-    // IF ok == false THEN
-    //     OUTPUT "Fehler: Statistik konnte nicht initialisiert werden"
-    //     STOP PROGRAM
-    // END IF
-    // g_stats.total_steps <- config.simulation_steps
+    ok = stats_init(&g_stats, "docs/simulation_steps.txt");
+    if (ok == false){
+        printf("Statistik konnte nicht initialisiert werden.");
+    }
+
+    g_next_id = 1;
+    
+    return true;
 }
 
 /**
@@ -56,16 +49,24 @@ void simulation_init(SimulationConfig config)
  */
 void simulation_run(SimulationConfig config)
 {
-    simulation_init(config); // Simulation initialisieren
+    
+    bool ok = false;
 
-    // Für jeden Zeitschritt
-    // FOR step <- 0 TO config.simulation_steps - 1 DO
-    //     simulation_step(config, step)
-    // END FOR
+    ok = simulation_init(config); // Simulation initialisieren und prüfen
+    if (ok == false){
+        printf("Simulation konnte nicht initialisiert werden.");
+        return;
+    }
 
-    // Gesamtauswertung ausgeben:
-    // stats_print(&g_stats)
-    // stats_close(&g_stats)
+    for (int step = 0; step < config.simulation_steps; step++){
+        simulation_step(config, step);
+    }
+
+    stats_print(&g_stats);
+    stats_close(&g_stats);
+
+    queue_free(&g_queue);
+    freeGarage(&g_garage);
 }
 
 /**
@@ -73,48 +74,57 @@ void simulation_run(SimulationConfig config)
  */
 void simulation_step(SimulationConfig config, int step)
 {
-    // PSEUDOCODE:
-    // parked_this_step <- 0
-    //
-    // Prüfen ob neues Fahrzeug ankommt:
-    // r <- RANDOM_NUMBER(0..99)
-    // IF r < config.arrival_probability THEN
-    //     v <- vehicle_create(&g_next_id, config.max_parking_time, step)
-    //     v.id <- g_next_id
-    //     g_next_id <- g_next_id + 1
-    //     v.time_remaining <- RANDOM_NUMBER(1..config.max_parking_time)
-    //     v.entry_time <- step
-    //
-    //     Einparken oder warten?
-    //     free_index <- findFreeSpot(&g_garage)
-    //     IF free_index != -1 THEN
-    //         ok <- parkVehicle(&g_garage, v)
-    //         IF ok == true THEN
-    //             parked_this_step <- parked_this_step + 1
-    //         END IF
-    //     ELSE
-    //         queue_enqueue(&g_queue, v)
-    //     END IF
-    // END IF
-    //
-    // Abfahrten verarbeiten:
-    // departures_this_step <- 0
-    // processDepartures(&g_garage, &departures_this_step)
-    //
-    // Warteschlange nachrücken lassen:
-    // WHILE findFreeSpot(&g_garage) != -1 AND queue_is_empty(&g_queue) == false DO
-    //     next <- queue_dequeue(&g_queue)
-    //     ok <- parkVehicle(&g_garage, next)
-    // END WHILE
-    //
-    //Statistiken aktualisieren + ausgeben:
+    int parked_this_step = 0;
+    int departures_this_step = 0;
+    int random_value = 0;
+    int free_index = -1;
+    int ok = 0;
+
+    vehicle new_vehicle;
+    vehicle queued_vehicle;
     StepStats step_stats;
-    // PSEUDOCODE:
-    // step_stats.step <- step
-    // step_stats.occupied_spots <- g_garage.occupiedCount
-    // step_stats.utilization_percent <- (g_garage.occupiedCount * 100) / g_garage.totalSpots
-    // step_stats.queue_length <- queue_get_size(&g_queue)
-    // step_stats.departures_this_step <- departures_this_step
-    // step_stats.parked_this_step <- parked_this_step
-    // stats_rec_step(&g_stats)
+
+    random_value = rand() % 100;
+    
+    if (random_value < config.arrival_probability){
+        new_vehicle = vehicle_create(&g_next_id, config.max_parking_time, step);
+
+        free_index = findFreeSpot(&g_garage);
+        if (free_index != -1){
+            ok = parkVehicle(&g_garage, new_vehicle);
+            if (ok == 1){
+                parked_this_step += 1;
+            }
+        }else {
+            ok = queue_enqueue(&g_queue, new_vehicle);
+            if (ok ==0){
+                printf("Auto konnte nicht in die Queue eingeführt werden.");
+            }
+        }
+    }
+
+    processDepartures(&g_garage, &departures_this_step);
+
+    while((findFreeSpot(&g_garage) != -1) && (queue_is_empty(&g_queue) == 0)){
+        ok = queue_dequeue(&g_queue, &queued_vehicle);
+        if (ok == 1){
+            ok = parkVehicle(&g_garage, queued_vehicle);
+            if (ok == 1){
+                parked_this_step += 1;
+            }
+        }
+    }
+
+    step_stats.step = step;
+    step_stats.occupied_spots = g_garage.occupiedCount;
+    step_stats.queue_length = queue_get_size(&g_queue);
+    step_stats.departures_this_step = departures_this_step;
+    step_stats.parked_this_step = parked_this_step;
+    if (step > 0){
+        step_stats.utilization_percent = (g_garage.occupiedCount * 100) / g_garage.capacity;
+    }else {
+        step_stats.utilization_percent = 0;
+    }
+
+    stats_rec_step(&g_stats, &step_stats);
 }

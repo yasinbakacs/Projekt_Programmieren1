@@ -31,7 +31,7 @@ typedef struct {
  *
  * @param config Konfigurationsdaten
  */
-void simulation_init(SimulationConfig config);
+bool simulation_init(SimulationConfig config);
 
 
 /**

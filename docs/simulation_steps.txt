@@ -1,0 +1,43 @@
+Step: 0
+Belegte Plaetze: 1
+Warteschlange: 0
+Abfahrten: 0
+Eingeparkt: 1
+-----------------------------
+Step: 1
+Belegte Plaetze: 2
+Warteschlange: 0
+Abfahrten: 0
+Eingeparkt: 1
+-----------------------------
+Step: 2
+Belegte Plaetze: 2
+Warteschlange: 0
+Abfahrten: 1
+Eingeparkt: 1
+-----------------------------
+Step: 3
+Belegte Plaetze: 2
+Warteschlange: 0
+Abfahrten: 0
+Eingeparkt: 0
+-----------------------------
+Step: 4
+Belegte Plaetze: 2
+Warteschlange: 0
+Abfahrten: 1
+Eingeparkt: 1
+-----------------------------
+Step: 5
+Belegte Plaetze: 2
+Warteschlange: 1
+Abfahrten: 0
+Eingeparkt: 0
+-----------------------------
+
+=== Gesamtstatistik ===
+Zeitschritte: 6
+Gesamte Abfahrten: 2
+Gesamt eingeparkt: 4
+Durchschnitt belegte Plaetze: 1.83
+Durchschnitt Warteschlange: 0.17
