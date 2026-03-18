@@ -191,23 +191,6 @@ static void test_processDepartures_withDeparture(void)
     freeGarage(&garage);
 }
 
-int main(void)
-{
-    test_initGarage_valid();
-    test_initGarage_invalid();
-
-    test_findFreeSpot_empty();
-    test_findFreeSpot_full();
-
-    test_parkVehicle_success();
-    test_parkVehicle_full();
-
-    test_processDepartures_noDeparture();
-    test_processDepartures_withDeparture();
-
-    printf("Alle Tests fuer parking.c erfolgreich bestanden.\n");
-    return 0;
-}
 void run_parking_tests(void)
 {
     test_initGarage_valid();
