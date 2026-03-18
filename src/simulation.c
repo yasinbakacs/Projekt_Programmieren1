@@ -34,7 +34,7 @@ bool simulation_init(SimulationConfig config)
 
     queue_init(&g_queue);
 
-    ok = stats_init(&g_stats, "docs/simulation_steps.txt");
+    ok = stats_init(&g_stats, "../docs/simulation_steps.txt");
     if (ok == false){
         printf("Statistik konnte nicht initialisiert werden.\n");
     }

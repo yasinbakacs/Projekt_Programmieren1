@@ -2,22 +2,22 @@
 Statistiken fuer Step 0: 
 
 Abfahrten: 0
-Neu Eingeparkt: 1
-Besetzte Plaetze: 1
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
 Laenge Warteschlange: 0
-Auslastung in Prozent: 16.666666
+Auslastung in Prozent: 0.000000
 -----------------------------
 Statistiken fuer Step 1: 
 
 Abfahrten: 0
 Neu Eingeparkt: 0
-Besetzte Plaetze: 1
+Besetzte Plaetze: 0
 Laenge Warteschlange: 0
-Auslastung in Prozent: 16.666666
+Auslastung in Prozent: 0.000000
 -----------------------------
 Statistiken fuer Step 2: 
 
-Abfahrten: 1
+Abfahrten: 0
 Neu Eingeparkt: 0
 Besetzte Plaetze: 0
 Laenge Warteschlange: 0
@@ -34,26 +34,58 @@ Auslastung in Prozent: 0.000000
 Statistiken fuer Step 4: 
 
 Abfahrten: 0
-Neu Eingeparkt: 1
-Besetzte Plaetze: 1
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
 Laenge Warteschlange: 0
-Auslastung in Prozent: 16.666666
+Auslastung in Prozent: 0.000000
 -----------------------------
 Statistiken fuer Step 5: 
 
 Abfahrten: 0
-Neu Eingeparkt: 1
-Besetzte Plaetze: 2
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
 Laenge Warteschlange: 0
-Auslastung in Prozent: 33.333332
+Auslastung in Prozent: 0.000000
+-----------------------------
+Statistiken fuer Step 6: 
+
+Abfahrten: 0
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
+Laenge Warteschlange: 0
+Auslastung in Prozent: 0.000000
+-----------------------------
+Statistiken fuer Step 7: 
+
+Abfahrten: 0
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
+Laenge Warteschlange: 0
+Auslastung in Prozent: 0.000000
+-----------------------------
+Statistiken fuer Step 8: 
+
+Abfahrten: 0
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
+Laenge Warteschlange: 0
+Auslastung in Prozent: 0.000000
+-----------------------------
+Statistiken fuer Step 9: 
+
+Abfahrten: 0
+Neu Eingeparkt: 0
+Besetzte Plaetze: 0
+Laenge Warteschlange: 0
+Auslastung in Prozent: 0.000000
 
 -----------------------------
 Die Simulation ist abgeschlossen.
 Insgesamt sind:
-6 Zeitschritte simuliert worden. 
-1 Autos ausgefahren. 
+10 Zeitschritte simuliert worden. 
+0 Autos ausgefahren. 
 
 Im Durchschnitt waren:
-Gesamt eingeparkt: 3
-0.83 Parkplaetze besetzt. 
+Gesamt eingeparkt: 0
+0.00 Parkplaetze besetzt. 
 0.00 Autos in der Warteschlange. 
