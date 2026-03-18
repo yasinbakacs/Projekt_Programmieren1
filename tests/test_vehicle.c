@@ -18,7 +18,14 @@ void test_vehicle_create_basic()
 
 void test_vehicle_create_id()
 {
+    int next_id = 1;
 
+    vehicle v1 = vehicle_create(&next_id, 5, 0);
+    vehicle v2 = vehicle_create(&next_id, 5, 1);
+
+    assert(v1.id == 1);
+    assert(v2.id == 2);
+    assert(next_id == 3);
 }
 
 
