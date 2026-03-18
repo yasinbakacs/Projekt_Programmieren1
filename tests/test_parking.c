@@ -96,7 +96,9 @@ static void test_findFreeSpot_full(void)
     assert(parkVehicle(&garage, v2) == true);
 
     index = findFreeSpot(&garage);
-
+    printf("occupied[0] = %d\n", garage.spots[0].occupied);
+printf("occupied[1] = %d\n", garage.spots[1].occupied);
+printf("index = %d\n", index);
     assert(index == -1);
 
     freeGarage(&garage);

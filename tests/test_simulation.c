@@ -37,7 +37,7 @@ void test_simulation_init_small_values(void)
 
 //Sammelfunktion
 
-void run_simulation_test(void){
+void run_simulation_tests(void){
     test_simulation_init_valid_();
     test_simulation_init_small_values();
 }

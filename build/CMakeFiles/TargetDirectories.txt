@@ -1,0 +1,4 @@
+C:/Users/yasin/Projekt_Programmieren1/build/CMakeFiles/simulation.dir
+C:/Users/yasin/Projekt_Programmieren1/build/CMakeFiles/tests.dir
+C:/Users/yasin/Projekt_Programmieren1/build/CMakeFiles/edit_cache.dir
+C:/Users/yasin/Projekt_Programmieren1/build/CMakeFiles/rebuild_cache.dir

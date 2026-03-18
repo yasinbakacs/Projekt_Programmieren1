@@ -39,7 +39,7 @@ int findFreeSpot(const ParkingGarage *garage) {
         return -1;
     }  
 
-    for (int i = 0; i <= garage->capacity; i++){
+    for (int i = 0; i < garage->capacity; i++){
         if (garage->spots[i].occupied == false){
             return i;
         }
