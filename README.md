@@ -57,11 +57,13 @@ Die Simulation bildet ein Parkhaus mit folgenden Eigenschaften ab:
    - test_parking.c
    - test_simulation.c
    - test_statistics.c
+   - test_main.c
 
 - /docs
    - statistics_uebersicht.md
    - Ausgabe_step_Konsole.txt
    - Ausgabe_gesamt_Konsole.txt
+   - Dokumentation.pdf
    - flowcharts/
       - simulation_step_flowchart.drawio.png
       - parkingVehicle_flowchart.drawio.png
@@ -135,6 +137,17 @@ In Teil 2 wurde der Programmentwurf vollständig in C umgesetzt.
 Alle Module wurden implementiert und miteinander integriert.
 
 Zusätzlich wurden für jede Funktion mindestens zwei Unit-Tests erstellt.
+
+---
+
+## Unit-Tests
+
+Für die wichtigsten Funktionen wurden Unit-Tests implementiert, 
+um die Korrektheit der Implementierung sicherzustellen.
+
+Die Tests befinden sich im Ordner:
+
+tests/
 
 ---
 
