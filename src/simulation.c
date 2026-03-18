@@ -20,7 +20,7 @@ static Stats g_stats;
 /**
  * @brief Initialisiert die Simulation.
  */
-void simulation_init(SimulationConfig config)
+bool simulation_init(SimulationConfig config)
 {
     bool ok = false;
 
@@ -40,6 +40,8 @@ void simulation_init(SimulationConfig config)
     }
 
     g_next_id = 1;
+    
+    return true;
 }
 
 /**
