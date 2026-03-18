@@ -27,14 +27,3 @@ void test_vehicle_create_id()
     assert(v2.id == 2);
     assert(next_id == 3);
 }
-
-
-int main()
-{
-    test_vehicle_create_basic();
-    test_vehicle_create_id();
-
-    printf("Alle Vehicle Tests bestanden!\n");
-
-    return 0;
-}
