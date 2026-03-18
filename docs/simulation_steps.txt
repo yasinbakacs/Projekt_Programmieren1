@@ -18,14 +18,14 @@ Auslastung in Prozent: 0.000000
 Statistiken fuer Step 2: 
 
 Abfahrten: 0
-Neu Eingeparkt: 0
-Besetzte Plaetze: 0
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
 Laenge Warteschlange: 0
-Auslastung in Prozent: 0.000000
+Auslastung in Prozent: 10.000000
 -----------------------------
 Statistiken fuer Step 3: 
 
-Abfahrten: 0
+Abfahrten: 1
 Neu Eingeparkt: 0
 Besetzte Plaetze: 0
 Laenge Warteschlange: 0
@@ -34,14 +34,14 @@ Auslastung in Prozent: 0.000000
 Statistiken fuer Step 4: 
 
 Abfahrten: 0
-Neu Eingeparkt: 0
-Besetzte Plaetze: 0
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
 Laenge Warteschlange: 0
-Auslastung in Prozent: 0.000000
+Auslastung in Prozent: 10.000000
 -----------------------------
 Statistiken fuer Step 5: 
 
-Abfahrten: 0
+Abfahrten: 1
 Neu Eingeparkt: 0
 Besetzte Plaetze: 0
 Laenge Warteschlange: 0
@@ -50,22 +50,22 @@ Auslastung in Prozent: 0.000000
 Statistiken fuer Step 6: 
 
 Abfahrten: 0
-Neu Eingeparkt: 0
-Besetzte Plaetze: 0
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
 Laenge Warteschlange: 0
-Auslastung in Prozent: 0.000000
+Auslastung in Prozent: 10.000000
 -----------------------------
 Statistiken fuer Step 7: 
 
-Abfahrten: 0
-Neu Eingeparkt: 0
-Besetzte Plaetze: 0
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
 Laenge Warteschlange: 0
-Auslastung in Prozent: 0.000000
+Auslastung in Prozent: 10.000000
 -----------------------------
 Statistiken fuer Step 8: 
 
-Abfahrten: 0
+Abfahrten: 1
 Neu Eingeparkt: 0
 Besetzte Plaetze: 0
 Laenge Warteschlange: 0
@@ -74,18 +74,98 @@ Auslastung in Prozent: 0.000000
 Statistiken fuer Step 9: 
 
 Abfahrten: 0
-Neu Eingeparkt: 0
-Besetzte Plaetze: 0
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
 Laenge Warteschlange: 0
-Auslastung in Prozent: 0.000000
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 10: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 11: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 12: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 13: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 14: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 15: 
+
+Abfahrten: 0
+Neu Eingeparkt: 1
+Besetzte Plaetze: 2
+Laenge Warteschlange: 0
+Auslastung in Prozent: 20.000000
+-----------------------------
+Statistiken fuer Step 16: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 2
+Laenge Warteschlange: 0
+Auslastung in Prozent: 20.000000
+-----------------------------
+Statistiken fuer Step 17: 
+
+Abfahrten: 2
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 18: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
+-----------------------------
+Statistiken fuer Step 19: 
+
+Abfahrten: 1
+Neu Eingeparkt: 1
+Besetzte Plaetze: 1
+Laenge Warteschlange: 0
+Auslastung in Prozent: 10.000000
 
 -----------------------------
 Die Simulation ist abgeschlossen.
 Insgesamt sind:
-10 Zeitschritte simuliert worden. 
-0 Autos ausgefahren. 
+20 Zeitschritte simuliert worden. 
+14 Autos ausgefahren. 
 
 Im Durchschnitt waren:
-Gesamt eingeparkt: 0
-0.00 Parkplaetze besetzt. 
+Gesamt eingeparkt: 15
+0.85 Parkplaetze besetzt. 
 0.00 Autos in der Warteschlange. 
