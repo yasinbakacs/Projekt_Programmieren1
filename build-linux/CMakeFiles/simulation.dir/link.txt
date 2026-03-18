@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/simulation.dir/src/main.c.o CMakeFiles/simulation.dir/src/simulation.c.o CMakeFiles/simulation.dir/src/parking.c.o CMakeFiles/simulation.dir/src/queue.c.o CMakeFiles/simulation.dir/src/vehicle.c.o CMakeFiles/simulation.dir/src/statistics.c.o -o simulation 

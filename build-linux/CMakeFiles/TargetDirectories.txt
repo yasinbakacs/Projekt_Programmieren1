@@ -1,0 +1,4 @@
+/workspaces/Projekt_Programmieren1/build-linux/CMakeFiles/simulation.dir
+/workspaces/Projekt_Programmieren1/build-linux/CMakeFiles/tests.dir
+/workspaces/Projekt_Programmieren1/build-linux/CMakeFiles/edit_cache.dir
+/workspaces/Projekt_Programmieren1/build-linux/CMakeFiles/rebuild_cache.dir
