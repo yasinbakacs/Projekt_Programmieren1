@@ -94,7 +94,7 @@ void simulation_step(SimulationConfig config, int step)
                 parked_this_step += 1;
             }
         }else{
-            ok = queue_dequeue(&g_queue, new_vehicle);
+            ok = queue_enqueue(&g_queue, new_vehicle);
             if (ok ==0){
                 printf("Auto konnte nicht in die Queue eingeführt werden.");
             }
@@ -103,7 +103,17 @@ void simulation_step(SimulationConfig config, int step)
 
     processDepartures(&g_garage, &departures_this_step);
 
-        
+    while((findFreeSpot(&g_garage) != -1) && (queue_is_empty(&g_queue) == 0)){
+        ok = queue_dequeue(&g_queue, &queued_vehicle);
+        if (ok == 1){
+            ok = parkVehicle(&g_garage, queued_vehicle);
+            if (ok == 1){
+                parked_this_step += 1;
+            }
+        }
+    }
+
+
     // PSEUDOCODE:
     // parked_this_step <- 0
     //
