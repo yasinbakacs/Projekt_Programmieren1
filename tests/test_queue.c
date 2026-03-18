@@ -160,20 +160,3 @@ void test_queue_free(void)
     assert(q.size == 0);
     assert(queue_is_empty(&q) == 1);
 }
-
-
-int main(void)
-{
-    test_queue_init();
-    test_queue_enqueue_add();
-    test_queue_enqueue_add_multiple();
-    test_queue_dequeue_remove();
-    test_queue_dequeue_empty();
-    test_queue_get_size();
-    test_queue_is_empty();
-    test_queue_free();
-
-    printf("Alle Queue Tests bestanden!\n");
-
-    return 0;
-}
